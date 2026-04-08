@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encurtou.pro - Dashboard Profissional</title>
+    
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="140px" height="40px" viewBox="0 0 14287 3882">
+                <g id="Camada_x0020_1">
+                    <g id="_2877010636624">
+                        <text x="2934" y="2972" style="fill:#04449E; font-weight:bold; font-size:1903.63px; font-family:'Arial'">encurtou</text>
+                        <text x="11077" y="2972" style="fill:#04449E; font-weight:normal; font-size:1903.63px; font-family:'Arial'">.pro</text>
+                        <line style="fill:none; stroke:#2BF6D1; stroke-width:306.218; stroke-linecap:round" x1="572" y1="3729" x2="2112" y2="2189" />
+                        <line style="fill:none; stroke:#2BF6D1; stroke-width:306.218; stroke-linecap:round" x1="153" y1="2645" x2="974" y2="1824" />
+                        <circle style="fill:#2BF6D1; stroke:#2BF6D1; stroke-width:21.7006" cx="975" cy="313" r="302"/>
+                    </g>
+                </g>
+            </svg>
+        </div>
+
+        <div class="header-right">
+            <button id="themeToggle" class="theme-btn" onclick="toggleTheme()" title="Alternar Tema">
+                <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+            
+            <div id="authMenu" class="auth-buttons"></div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" onclick="showSection('section-home', event)" class="active"><i class="fas fa-link"></i> Encurtador</a>
+                <a href="#" onclick="showSection('section-analytics', event)"><i class="fas fa-chart-pie"></i> Analytics</a>
+                <a href="#" onclick="showSection('section-mylinks', event)"><i class="fas fa-list"></i> Meus Links</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="section-home" class="view-section">
+                <header class="hero" style="text-align: left; margin-bottom: 40px;">
+                    <h1>Criar novo <span>link</span></h1>
+                    <p>Transforme URLs longas em acessos profissionais.</p>
+                </header>
+
+                <div class="card-shortener" style="max-width: 800px;">
+                    <div class="form-group">
+                        <label>URL de Destino (Obrigatório)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-link"></i>
+                            <input type="url" id="longUrl" placeholder="https://exemplo.com/pagina" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subdomínio <span class="optional">(Opcional)</span></label>
+                        <div class="subdomain-box">
+                            <input type="text" id="subdomain" placeholder="ex: oferta" maxlength="25">
+                            <span class="host-display">.encurtou.pro</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Terminação personalizada (Obrigatório)</label>
+                        <div class="path-box">
+                            <span class="prefix">/</span>
+                            <input type="text" id="pathSlug" placeholder="codigo" required>
+                            <button type="button" onclick="generateRandomSlug()" class="refresh-btn" title="Gerar novo código">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button onclick="processLink()" id="btnMain" class="btn-primary">
+                        Gerar Link Agora <i class="fas fa-magic"></i>
+                    </button>
+                </div>
+
+                <div id="resultArea" class="result-area hidden" style="max-width: 800px;">
+                    <div class="result-card">
+                        <h3><i class="fas fa-check-circle"></i> Link Gerado com Sucesso!</h3>
+                        <div class="result-display">
+                            <input type="text" id="shortUrl" readonly>
+                            <button onclick="copyLink()" id="btnCopy">Copiar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-analytics" class="view-section hidden">
+                <header class="hero" style="text-align: left; margin-bottom: 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+                    <div>
+                        <h1>Analytics <span>Detalhado</span></h1>
+                        <p>Métricas de desempenho dos seus links em tempo real.</p>
+                    </div>
+                    <div style="background:var(--card); padding:10px 15px; border-radius:10px; border:1px solid var(--border);">
+                        <label style="display:inline-block; margin:0 10px 0 0; color:var(--text);">Filtrar Link:</label>
+                        <select id="analyticsFilter" onchange="loadAnalytics()" class="custom-select">
+                            <option value="all">Todos os meus links</option>
+                        </select>
+                    </div>
+                </header>
+                
+                <div class="analytics-grid">
+                    <div class="chart-container"><h3>Cliques por País</h3><canvas id="chartCountries"></canvas></div>
+                    <div class="chart-container"><h3>Origem do Tráfego</h3><canvas id="chartReferrers"></canvas></div>
+                    <div class="chart-container"><h3>Dispositivos</h3><canvas id="chartDevices"></canvas></div>
+                    <div class="chart-container"><h3>Navegadores</h3><canvas id="chartBrowsers"></canvas></div>
+                </div>
+            </section>
+
+            <section id="section-mylinks" class="view-section hidden">
+                <header class="hero" style="text-align: left; margin-bottom: 30px;">
+                    <h1>Meus <span>Links</span></h1>
+                    <p>Gerencie, edite ou pause os links criados.</p>
+                </header>
+                
+                <div class="table-container">
+                    <table class="links-table">
+                        <thead>
+                            <tr>
+                                <th>Link Curto</th>
+                                <th>Destino Original</th>
+                                <th>Cliques</th>
+                                <th style="text-align:right;">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myLinksBody">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay hidden">
+        
+        <div id="modalLogin" class="modal-content hidden">
+            <div class="modal-header"><h2>Entrar</h2><button onclick="closeModals()" class="close-btn"><i class="fas fa-times"></i></button></div>
+            <form onsubmit="handleAuth(event, 'login')">
+                <input type="email" id="loginEmail" placeholder="Seu E-mail" required>
+                <input type="password" id="loginPass" placeholder="Sua Senha" required>
+                <button type="submit" class="btn-primary" style="padding:15px; margin-top:10px;">Entrar</button>
+            </form>
+            <div class="modal-links"><a href="#" onclick="openModal('modalForgot')">Esqueceu a senha?</a><a href="#" onclick="openModal('modalSignup')">Criar Conta</a></div>
+        </div>
+
+        <div id="modalSignup" class="modal-content hidden">
+            <div class="modal-header"><h2>Criar Conta</h2><button onclick="closeModals()" class="close-btn"><i class="fas fa-times"></i></button></div>
+            <form onsubmit="handleAuth(event, 'signup')">
+                <input type="text" id="signName" placeholder="Nome Completo" required>
+                <input type="text" id="signNickname" placeholder="Como quer ser chamado?" required>
+                <input type="email" id="signEmail" placeholder="E-mail" required>
+                <input type="tel" id="signPhone" placeholder="Telefone / WhatsApp" required>
+                <input type="password" id="signPass" placeholder="Crie uma Senha" required>
+                <button type="submit" class="btn-primary" style="padding:15px; margin-top:10px;">Cadastrar</button>
+            </form>
+            <div class="modal-links"><a href="#" onclick="openModal('modalLogin')">Já tenho conta</a></div>
+        </div>
+
+        <div id="modalForgot" class="modal-content hidden">
+            <div class="modal-header"><h2>Recuperar Senha</h2><button onclick="closeModals()" class="close-btn"><i class="fas fa-times"></i></button></div>
+            <form onsubmit="handleForgot(event)"><input type="email" id="forgotEmail" placeholder="E-mail cadastrado" required><button type="submit" class="btn-primary" style="padding:15px; margin-top:10px;" id="btnForgot">Enviar Código</button></form>
+            <div class="modal-links"><a href="#" onclick="openModal('modalLogin')">Voltar ao Login</a></div>
+        </div>
+
+        <div id="modalReset" class="modal-content hidden">
+            <div class="modal-header"><h2>Nova Senha</h2><button onclick="closeModals()" class="close-btn"><i class="fas fa-times"></i></button></div>
+            <form onsubmit="handleReset(event)"><input type="text" id="resetCode" placeholder="Código de 6 dígitos" required><input type="password" id="resetPass" placeholder="Nova Senha" required><button type="submit" class="btn-primary" style="padding:15px; margin-top:10px;">Salvar</button></form>
+        </div>
+
+        <div id="modalEditLink" class="modal-content hidden" style="max-width: 500px;">
+            <div class="modal-header"><h2>Editar Destino</h2><button onclick="closeModals()" class="close-btn"><i class="fas fa-times"></i></button></div>
+            <p style="color:var(--text-dim); font-size:0.9rem; margin-bottom:15px;">A nova URL entrará em vigor imediatamente.</p>
+            <form onsubmit="saveEditLink(event)">
+                <input type="hidden" id="editLinkId">
+                <input type="url" id="editLinkUrl" placeholder="Novo destino (https://...)" required>
+                <button type="submit" class="btn-primary" style="padding:15px; margin-top:10px;">Salvar Alteração</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

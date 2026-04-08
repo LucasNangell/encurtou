@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Forçar HTTPS (Cloudflare geralmente faz isso, mas é bom ter no código)
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Ignorar arquivos reais
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Encaminhar o slug para o redirecionador
+RewriteRule ^(.*)$ redirect.php?slug=$1 [L,QSA]
