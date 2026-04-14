@@ -1,173 +1,387 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encurtou.pro - Dashboard Profissional</title>
-    
-    <script>
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
-            document.documentElement.setAttribute('data-theme', 'light');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
-    </script>
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.2">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js" defer></script>
-</head>
-<body>
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
 
-    <header class="top-header">
-        <div class="header-logo">
-            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="140px" height="40px" viewBox="0 0 14287 3882">
+    <script src="script.js?v=2.57" defer></script>
+</head>
+
+<body class="dashboard-layout">
+
+    <header class="mobile-header">
+        <div class="mobile-logo">
+            <i class="fas fa-link" style="color: var(--primary); margin-right: 10px;"></i>
+            <span>Encurtou.pro</span>
+        </div>
+        <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Abrir menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+
+
+    <aside class="sidebar">
+        <div class="sidebar-logo" style="margin-bottom: 30px; display: flex; justify-content: center; width: 100%;">
+            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="160px" height="45px"
+                viewBox="0 0 14287 3882">
                 <g id="Camada_x0020_1">
                     <g id="_2877010636624">
-                        <text x="2934" y="2972" style="fill:#04449E; font-weight:bold; font-size:1903.63px; font-family:'Arial'">encurtou</text>
-                        <text x="11077" y="2972" style="fill:#04449E; font-weight:normal; font-size:1903.63px; font-family:'Arial'">.pro</text>
-                        <line style="fill:none; stroke:#2BF6D1; stroke-width:306.218; stroke-linecap:round" x1="572" y1="3729" x2="2112" y2="2189" />
-                        <line style="fill:none; stroke:#2BF6D1; stroke-width:306.218; stroke-linecap:round" x1="153" y1="2645" x2="974" y2="1824" />
-                        <circle style="fill:#2BF6D1; stroke:#2BF6D1; stroke-width:21.7006" cx="975" cy="313" r="302"/>
+                        <text x="2934" y="2972"
+                            style="fill:#e2e8f0; font-weight:bold; font-size:1903.63px; font-family:'Arial'">encurtou</text>
+                        <text x="11077" y="2972"
+                            style="fill:#e2e8f0; font-weight:normal; font-size:1903.63px; font-family:'Arial'">.pro</text>
+                        <line style="fill:none; stroke:#2BF6D1; stroke-width:306.218; stroke-linecap:round" x1="572"
+                            y1="3729" x2="2112" y2="2189" />
+                        <line style="fill:none; stroke:#2BF6D1; stroke-width:306.218; stroke-linecap:round" x1="153"
+                            y1="2645" x2="974" y2="1824" />
+                        <circle style="fill:#2BF6D1; stroke:#2BF6D1; stroke-width:21.7006" cx="975" cy="313" r="302" />
                     </g>
                 </g>
             </svg>
         </div>
 
-        <div class="header-right">
-            <button id="themeToggle" class="theme-btn" onclick="toggleTheme()" title="Alternar Tema">
-                <i class="fas fa-moon" id="themeIcon"></i>
-            </button>
-            
-            <div id="authMenu" class="auth-buttons"></div>
+        <nav class="sidebar-nav">
+            <a href="#" onclick="showSection('section-home', event)" class="active"><i class="fas fa-home"></i>
+                Início</a>
+            <a href="#" onclick="showSection('section-analytics', event)"><i class="fas fa-chart-pie"></i> Analytics
+                Detalhado</a>
+            <a href="#" onclick="showSection('section-mylinks', event)"><i class="fas fa-list"></i> Meus Links</a>
+            <a href="#" onclick="showSection('section-myqrs', event)"><i class="fas fa-qrcode"></i> Meus QR Codes</a>
+        </nav>
+
+        <div id="authMenu"
+            style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 10px;">
         </div>
-    </header>
+    </aside>
 
-    <div class="dashboard-layout">
-        <aside class="sidebar">
-            <nav class="sidebar-nav">
-                <a href="#" onclick="showSection('section-home', event)" class="active"><i class="fas fa-link"></i> Encurtador</a>
-                <a href="#" onclick="showSection('section-analytics', event)"><i class="fas fa-chart-pie"></i> Analytics</a>
-                <a href="#" onclick="showSection('section-mylinks', event)"><i class="fas fa-list"></i> Meus Links</a>
-            </nav>
-        </aside>
+    <main class="main-content">
 
-        <main class="main-content">
-            
-            <section id="section-home" class="view-section">
-                <header class="hero" style="text-align: left; margin-bottom: 40px;">
-                    <h1>Criar novo <span>link</span></h1>
-                    <p>Transforme URLs longas em acessos profissionais.</p>
-                </header>
+        <section id="section-home" class="view-section">
+            <header class="hero">
+                <h1>Criar novo <span>link</span></h1>
+                <p>Transforme URLs longas em acessos profissionais.</p>
+            </header>
 
-                <div class="card-shortener" style="max-width: 800px;">
+            <div class="home-tabs">
+                <button onclick="switchHomeTab('links')" id="tabHomeLinks" class="active">Gerar Links</button>
+                <button onclick="switchHomeTab('qrcodes')" id="tabHomeQR">QR Codes</button>
+                <div class="tab-slider"></div>
+            </div>
+
+            <div id="home-content-links" class="home-tab-content">
+                <div class="card-shortener">
                     <div class="form-group">
-                        <label>URL de Destino (Obrigatório)</label>
+                        <label>URL de Destino</label>
                         <div class="input-wrapper">
                             <i class="fas fa-link"></i>
-                            <input type="url" id="longUrl" placeholder="https://exemplo.com/pagina" required>
+                            <input type="url" id="longUrl" placeholder="https://exemplo.com/pagina-de-vendas" required>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Subdomínio <span class="optional">(Opcional)</span></label>
-                        <div class="subdomain-box">
-                            <input type="text" id="subdomain" placeholder="ex: oferta" maxlength="25">
-                            <span class="host-display">.encurtou.pro</span>
-                        </div>
+                    <div id="customPathToggle" style="margin-bottom: 25px;">
+                        <button type="button" onclick="toggleCustomPath()" class="btn-text"
+                            style="color: var(--primary); font-size: 0.9rem; padding: 0;">
+                            <i class="fas fa-plus-circle"></i> Personalizar terminação do link
+                        </button>
+                        <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 5px;">
+                            Ex: https://encurtou.pro/<strong>seu-texto</strong>
+                        </p>
                     </div>
 
-                    <div class="form-group">
-                        <label>Terminação personalizada (Obrigatório)</label>
-                        <div class="path-box">
-                            <span class="prefix">/</span>
-                            <input type="text" id="pathSlug" placeholder="codigo" required>
-                            <button type="button" onclick="generateRandomSlug()" class="refresh-btn" title="Gerar novo código">
-                                <i class="fas fa-sync-alt"></i>
-                            </button>
+                    <div id="customPathGroup" class="hidden" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label>Subdomínio (Opcional)</label>
+                            <div class="subdomain-box">
+                                <input type="text" id="subdomain" placeholder="ex: ofertas"
+                                    style="text-align: right; padding-right: 5px;">
+                                <span class="host-display">.encurtou.pro</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label>Terminação personalizada</label>
+                            <div class="path-box">
+                                <span class="prefix">/</span>
+                                <input type="text" id="pathSlug" placeholder="codigo" required>
+                                <button type="button" onclick="generateRandomSlug()" class="refresh-btn"
+                                    title="Gerar novo código">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                            <div id="slugStatus" class="slug-status"></div>
                         </div>
                     </div>
 
                     <button onclick="processLink()" id="btnMain" class="btn-primary">
                         Gerar Link Agora <i class="fas fa-magic"></i>
                     </button>
-                </div>
 
-                <div id="resultArea" class="result-area hidden" style="max-width: 800px;">
-                    <div class="result-card">
-                        <h3><i class="fas fa-check-circle"></i> Link Gerado com Sucesso!</h3>
-                        <div class="result-display">
-                            <input type="text" id="shortUrl" readonly>
-                            <button onclick="copyLink()" id="btnCopy">Copiar</button>
+                    <div id="resultArea" class="result-area hidden" style="margin-top: 30px;">
+                        <div class="result-card"
+                            style="padding: 20px; background: rgba(43, 246, 209, 0.05); border: 2px dashed var(--primary); border-radius: 15px; text-align: center;">
+                            <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 1.1rem;"><i
+                                    class="fas fa-check-circle"></i> Seu link está pronto!</h3>
+                            <div class="result-display" style="display: flex; gap: 10px;">
+                                <input type="text" id="shortUrl" readonly
+                                    style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: var(--primary); font-weight: 700;">
+                                <button onclick="copyLink()" id="btnCopy" class="btn-primary"
+                                    style="width: auto; padding: 0 20px; height: 50px;">Copiar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="section-analytics" class="view-section hidden">
-                <header class="hero" style="text-align: left; margin-bottom: 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
-                    <div>
-                        <h1>Analytics <span>Detalhado</span></h1>
-                        <p>Métricas de desempenho dos seus links em tempo real.</p>
-                    </div>
-                    <div style="background:var(--card); padding:10px 15px; border-radius:10px; border:1px solid var(--border);">
-                        <label style="display:inline-block; margin:0 10px 0 0; color:var(--text);">Filtrar Link:</label>
-                        <select id="analyticsFilter" onchange="loadAnalytics()" class="custom-select">
-                            <option value="all">Todos os meus links</option>
-                        </select>
-                    </div>
-                </header>
-                
-                <div class="analytics-grid">
-                    <div class="chart-container"><h3>Cliques por País</h3><canvas id="chartCountries"></canvas></div>
-                    <div class="chart-container"><h3>Origem do Tráfego</h3><canvas id="chartReferrers"></canvas></div>
-                    <div class="chart-container"><h3>Dispositivos</h3><canvas id="chartDevices"></canvas></div>
-                    <div class="chart-container"><h3>Navegadores</h3><canvas id="chartBrowsers"></canvas></div>
-                </div>
-            </section>
+            <div id="home-content-qrcodes" class="home-tab-content hidden">
+                <div class="qr-management-container">
+                    <div class="qr-config-panel">
+                        <div class="card">
+                            <div class="qr-mode-tabs">
+                                <button onclick="toggleQRMode('select')" id="tabQrSelect">
+                                    <i class="fas fa-link"></i> Usar Link Existente
+                                </button>
+                                <button onclick="toggleQRMode('create')" id="tabQrCreate" class="active">
+                                    <i class="fas fa-plus"></i> Criar Novo QR Dinâmico
+                                </button>
+                            </div>
 
-            <section id="section-mylinks" class="view-section hidden">
-                <header class="hero" style="text-align: left; margin-bottom: 30px;">
-                    <h1>Meus <span>Links</span></h1>
-                    <p>Gerencie, edite ou pause os links criados.</p>
-                </header>
-                
-                <div class="table-container">
-                    <table class="links-table">
-                        <thead>
-                            <tr>
-                                <th>Link Curto</th>
-                                <th>Destino Original</th>
-                                <th>Cliques</th>
-                                <th style="text-align:right;">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="myLinksBody">
-                            </tbody>
-                    </table>
+                            <!-- MODO: Selecionar Existente -->
+                            <div id="qrModeSelect" class="qr-mode-content hidden">
+                                <h3>1. Selecione o Link</h3>
+                                <div class="form-group">
+                                    <select id="qrLinkSelect" onchange="updateQRPreview()" style="width:100%;">
+                                        <option value="">Carregando meus links...</option>
+                                    </select>
+                                </div>
+                                <button onclick="saveExistingAsQR()" id="btnSaveExisting" class="btn-primary"
+                                    style="margin-top:10px; width:100%; background:rgba(59, 130, 246, 0.2); color:#3b82f6; border:1px solid rgba(59, 130, 246, 0.3);">
+                                    Salvar como QR Code <i class="fas fa-save"></i>
+                                </button>
+                            </div>
+
+                            <!-- MODO: Criar Novo -->
+                            <div id="qrModeCreate" class="qr-mode-content">
+                                <h3>1. Configurar Novo QR</h3>
+                                <div class="form-group">
+                                    <label>URL de Destino</label>
+                                    <input type="url" id="qrNewTarget" placeholder="https://exemplo.com/seu-produto"
+                                        oninput="updateQRPreview()">
+                                </div>
+                                <div class="form-group">
+                                    <label>Subdomínio (Opcional)</label>
+                                    <div class="subdomain-box">
+                                        <input type="text" id="qrSubdomain" placeholder="sub"
+                                            style="text-align: right; padding-right: 5px;" oninput="updateQRPreview()">
+                                        <span class="host-display">.encurtou.pro</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Terminação (Slug)</label>
+                                    <div style="display: flex; gap: 5px;">
+                                        <div class="path-box" style="flex: 1; padding: 0 10px;">
+                                            <span class="prefix">/</span>
+                                            <input type="text" id="qrNewPath" placeholder="qrcode-vendas"
+                                                oninput="updateQRPreview()">
+                                        </div>
+                                        <button class="btn-outline" onclick="generateQRPath(); updateQRPreview();"
+                                            style="padding: 10px; width: 50px;"><i class="fas fa-magic"></i></button>
+                                    </div>
+                                </div>
+                                <button onclick="saveQRLink()" id="btnSaveQR" class="btn-primary"
+                                    style="margin-top:15px; width:100%;">
+                                    Salvar QR Code <i class="fas fa-save"></i>
+                                </button>
+                            </div>
+
+                            <h3 style="margin-top:25px;">2. Personalização Visual</h3>
+
+                            <div class="control-group-grid">
+                                <div class="form-group">
+                                    <label>Cor do QR</label>
+                                    <input type="color" id="qrColor" value="#000000" onchange="updateQRPreview()">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cor do Fundo</label>
+                                    <input type="color" id="qrBgColor" value="#ffffff" onchange="updateQRPreview()">
+                                </div>
+                            </div>
+
+                            <div class="control-group-grid">
+                                <div class="form-group">
+                                    <label>Módulos</label>
+                                    <select id="qrModuleStyle" onchange="updateQRPreview()">
+                                        <option value="square">Quadrado</option>
+                                        <option value="dots">Pontos</option>
+                                        <option value="rounded">Arredondado</option>
+                                        <option value="extra-rounded">Super Arredondado</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Cantos (Olhos)</label>
+                                    <select id="qrCornerStyle" onchange="updateQRPreview()">
+                                        <option value="square">Quadrado</option>
+                                        <option value="dot">Circular</option>
+                                        <option value="extra-rounded">Arredondado</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Logo Central <span class="optional">(Upload)</span></label>
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <input type="file" id="qrLogoFile" accept="image/*"
+                                        onchange="handleLogoUpload(this)" style="display: none;">
+                                    <button type="button" onclick="document.getElementById('qrLogoFile').click()"
+                                        class="btn-outline" style="padding: 10px; font-size: 0.8rem; width: auto;">
+                                        <i class="fas fa-upload"></i> Escolher Logo
+                                    </button>
+                                    <span id="logoFileName"
+                                        style="font-size: 0.8rem; color: #94a3b8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Nenhum
+                                        arquivo...</span>
+                                </div>
+                                <input type="hidden" id="qrLogoUrl">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qr-preview-panel">
+                        <div class="card" style="text-align: center;">
+                            <h3>Pré-visualização</h3>
+                            <div id="qrPreviewCanvas" style="margin: 20px auto;"></div>
+
+                            <div class="download-options">
+                                <button onclick="downloadQR('png')" class="btn-primary">
+                                    <i class="fas fa-file-image"></i> Baixar PNG
+                                </button>
+                                <button onclick="downloadQR('svg')" class="btn-outline">
+                                    <i class="fas fa-file-code"></i> Baixar SVG (Impressão)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
-        </main>
-    </div>
+            </div>
+        </section>
+
+        <section id="section-analytics" class="view-section hidden">
+            <header class="hero"
+                style="margin-bottom: 40px; display:flex; justify-content:center; align-items:center; flex-direction:column; gap:20px;">
+                <div style="text-align: center;">
+                    <h1>Analytics <span>Detalhado</span></h1>
+                    <p>Métricas de desempenho dos seus links em tempo real.</p>
+                </div>
+                <div
+                    style="background:var(--card); padding:10px 15px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);">
+                    <label style="display:inline-block; margin:0 10px 0 0; color:var(--text);">Filtrar Link:</label>
+                    <select id="analyticsFilter" onchange="loadAnalytics()"
+                        style="background:var(--dark); color:white; border:none; padding:8px; border-radius:8px; outline:none;">
+                        <option value="all">Todos os meus links</option>
+                    </select>
+                </div>
+            </header>
+
+            <div class="analytics-grid">
+                <div class="chart-container">
+                    <h3>Cliques por País</h3><canvas id="chartCountries"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Origem do Tráfego</h3><canvas id="chartReferrers"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Dispositivos</h3><canvas id="chartDevices"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Navegadores</h3><canvas id="chartBrowsers"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Origem do Clique</h3><canvas id="chartSources"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-mylinks" class="view-section hidden">
+            <header class="hero">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%; gap: 20px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h1>Meus <span>Links Encurtados</span></h1>
+                        <p>Gerencie, edite e acompanhe o desempenho de todos os seus links em tempo real.</p>
+                    </div>
+                    <div class="view-controls" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        <button onclick="toggleViewMode('myLinksCards', 'grid')" id="btnViewGridLinks"
+                            class="btn-view active" title="Ver em Cards"><i class="fas fa-th-large"></i></button>
+                        <button onclick="toggleViewMode('myLinksCards', 'list')" id="btnViewListLinks" class="btn-view"
+                            title="Ver em Lista"><i class="fas fa-list"></i></button>
+                    </div>
+                </div>
+            </header>
+
+            <div id="myLinksCards" class="links-cards-grid">
+                <!-- Renderizado via script.js -->
+            </div>
+        </section>
+
+        <section id="section-myqrs" class="view-section hidden">
+            <header class="hero">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%; gap: 20px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h1>Meus <span>QR Codes</span></h1>
+                        <p>Gerencie e monitore o desempenho de todos os seus QR Codes dinâmicos.</p>
+                    </div>
+                    <div class="view-controls" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        <button onclick="toggleViewMode('myQRsCards', 'grid')" id="btnViewGridQRs"
+                            class="btn-view active" title="Ver em Cards"><i class="fas fa-th-large"></i></button>
+                        <button onclick="toggleViewMode('myQRsCards', 'list')" id="btnViewListQRs" class="btn-view"
+                            title="Ver em Lista"><i class="fas fa-list"></i></button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="qr-list-header"
+                style="margin-bottom: 25px; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <button onclick="loadQRLinks()" class="btn-text" style="color:var(--primary);"><i
+                        class="fas fa-sync-alt"></i> Atualizar Lista</button>
+            </div>
+
+            <div id="myQRsCards" class="links-cards-grid">
+                <!-- Renderizado via script.js -->
+            </div>
+        </section>
+
+    </main>
 
     <div id="modalOverlay" class="modal-overlay hidden">
-        
+
         <div id="modalLogin" class="modal-content hidden">
-            <div class="modal-header"><h2>Entrar</h2><button onclick="closeModals()" class="close-btn"><i class="fas fa-times"></i></button></div>
+            <div class="modal-header">
+                <h2>Entrar</h2><button onclick="closeModals()" class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
             <form onsubmit="handleAuth(event, 'login')">
                 <input type="email" id="loginEmail" placeholder="Seu E-mail" required>
                 <input type="password" id="loginPass" placeholder="Sua Senha" required>
                 <button type="submit" class="btn-primary" style="padding:15px; margin-top:10px;">Entrar</button>
             </form>
-            <div class="modal-links"><a href="#" onclick="openModal('modalForgot')">Esqueceu a senha?</a><a href="#" onclick="openModal('modalSignup')">Criar Conta</a></div>
+            <div class="modal-links"><a href="#" onclick="openModal('modalForgot')">Esqueceu a senha?</a><a href="#"
+                    onclick="openModal('modalSignup')">Criar Conta</a></div>
         </div>
 
         <div id="modalSignup" class="modal-content hidden">
-            <div class="modal-header"><h2>Criar Conta</h2><button onclick="closeModals()" class="close-btn"><i class="fas fa-times"></i></button></div>
+            <div class="modal-header">
+                <h2>Criar Conta</h2><button onclick="closeModals()" class="close-btn"><i
+                        class="fas fa-times"></i></button>
+            </div>
             <form onsubmit="handleAuth(event, 'signup')">
                 <input type="text" id="signName" placeholder="Nome Completo" required>
                 <input type="text" id="signNickname" placeholder="Como quer ser chamado?" required>
@@ -180,26 +394,86 @@
         </div>
 
         <div id="modalForgot" class="modal-content hidden">
-            <div class="modal-header"><h2>Recuperar Senha</h2><button onclick="closeModals()" class="close-btn"><i class="fas fa-times"></i></button></div>
-            <form onsubmit="handleForgot(event)"><input type="email" id="forgotEmail" placeholder="E-mail cadastrado" required><button type="submit" class="btn-primary" style="padding:15px; margin-top:10px;" id="btnForgot">Enviar Código</button></form>
+            <div class="modal-header">
+                <h2>Recuperar Senha</h2><button onclick="closeModals()" class="close-btn"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <form onsubmit="handleForgot(event)"><input type="email" id="forgotEmail" placeholder="E-mail cadastrado"
+                    required><button type="submit" class="btn-primary" style="padding:15px; margin-top:10px;"
+                    id="btnForgot">Enviar Código</button></form>
             <div class="modal-links"><a href="#" onclick="openModal('modalLogin')">Voltar ao Login</a></div>
         </div>
 
         <div id="modalReset" class="modal-content hidden">
-            <div class="modal-header"><h2>Nova Senha</h2><button onclick="closeModals()" class="close-btn"><i class="fas fa-times"></i></button></div>
-            <form onsubmit="handleReset(event)"><input type="text" id="resetCode" placeholder="Código de 6 dígitos" required><input type="password" id="resetPass" placeholder="Nova Senha" required><button type="submit" class="btn-primary" style="padding:15px; margin-top:10px;">Salvar</button></form>
+            <div class="modal-header">
+                <h2>Nova Senha</h2><button onclick="closeModals()" class="close-btn"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <form onsubmit="handleReset(event)"><input type="text" id="resetCode" placeholder="Código de 6 dígitos"
+                    required><input type="password" id="resetPass" placeholder="Nova Senha" required><button
+                    type="submit" class="btn-primary" style="padding:15px; margin-top:10px;">Salvar</button></form>
         </div>
 
-        <div id="modalEditLink" class="modal-content hidden" style="max-width: 500px;">
-            <div class="modal-header"><h2>Editar Destino</h2><button onclick="closeModals()" class="close-btn"><i class="fas fa-times"></i></button></div>
-            <p style="color:var(--text-dim); font-size:0.9rem; margin-bottom:15px;">A nova URL entrará em vigor imediatamente.</p>
+        <div id="modalEditLink" class="modal-content hidden" style="max-width: 550px;">
+            <div class="modal-header">
+                <h2>Editar Link</h2><button onclick="closeModals()" class="close-btn"><i
+                        class="fas fa-times"></i></button>
+            </div>
+
             <form onsubmit="saveEditLink(event)">
                 <input type="hidden" id="editLinkId">
-                <input type="url" id="editLinkUrl" placeholder="Novo destino (https://...)" required>
-                <button type="submit" class="btn-primary" style="padding:15px; margin-top:10px;">Salvar Alteração</button>
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label style="color:var(--primary); font-weight:600; display:block; margin-bottom:8px;">URL de
+                        Destino
+                        Padrão</label>
+                    <input type="url" id="editLinkUrl" placeholder="https://..." required
+                        style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); width:100%; padding:12px; border-radius:8px; color:white;">
+                </div>
+
+                <div style="margin-top:25px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1);">
+                    <h3 style="font-size:1rem; margin-bottom:15px; display:flex; align-items:center; gap:10px;">
+                        <i class="fas fa-mobile-alt"></i> Redirecionamento por Dispositivo
+                    </h3>
+
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <label style="font-size:0.85rem; color:#94a3b8; margin-bottom:5px; display:block;"><i
+                                class="fab fa-apple"></i> iOS (iPhone/iPad)</label>
+                        <input type="url" id="editLinkIos" placeholder="Vazio = Usar padrão"
+                            style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); width:100%; padding:10px; border-radius:8px; color:white; font-size:0.9rem;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <label style="font-size:0.85rem; color:#94a3b8; margin-bottom:5px; display:block;"><i
+                                class="fab fa-android"></i> Android</label>
+                        <input type="url" id="editLinkAndroid" placeholder="Vazio = Usar padrão"
+                            style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); width:100%; padding:10px; border-radius:8px; color:white; font-size:0.9rem;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <label style="font-size:0.85rem; color:#94a3b8; margin-bottom:5px; display:block;"><i
+                                class="fab fa-windows"></i> Windows / Desktop</label>
+                        <input type="url" id="editLinkWindows" placeholder="Vazio = Usar padrão"
+                            style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); width:100%; padding:10px; border-radius:8px; color:white; font-size:0.9rem;">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" style="padding:15px; margin-top:20px; width:100%;">Salvar
+                    Todas as Configurações</button>
             </form>
+        </div>
+        <div id="modalDetails" class="modal-content hidden">
+            <div class="modal-header">
+                <h2>Detalhes do Link</h2><button onclick="closeModals()" class="close-btn"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <div id="detailsContent" style="color: var(--text); line-height: 1.6;">
+                <!-- Preenchido via JS -->
+            </div>
         </div>
 
     </div>
+
 </body>
+
 </html>
