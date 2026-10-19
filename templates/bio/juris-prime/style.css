@@ -1,0 +1,91 @@
+body.tpl-juris-prime,
+#bioPreviewDevice.tpl-juris-prime {
+    --text: #f3f3f3 !important;
+    --bg: #3a3b40 !important;
+    --primary: #d4b06a !important;
+}
+
+.tpl-juris-prime.bio-page-shell {
+    background: transparent !important;
+    color: #f3f3f3 !important;
+}
+
+body.tpl-juris-prime .bio-public-bg-fixed,
+#bioPreviewDevice.tpl-juris-prime .bio-public-bg-fixed {
+    background: #3a3b40 !important;
+}
+
+body.tpl-juris-prime .bio-public-bg-fixed::after,
+#bioPreviewDevice.tpl-juris-prime .bio-public-bg-fixed::after {
+    content: none;
+}
+
+.tpl-juris-prime .bio-page-shell .bio-header {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 28px;
+}
+
+.tpl-juris-prime .bio-page-shell .bio-header .preview-name,
+.tpl-juris-prime .bio-page-shell .bio-header .preview-bio,
+.tpl-juris-prime .bio-page-shell .bio-header .bio-subtitle,
+.tpl-juris-prime .bio-page-shell .bio-header .bio-kicker {
+    color: #ffffff !important;
+}
+
+.tpl-juris-prime .bio-page-shell .bio-avatar {
+    width: clamp(120px, 40vw, 170px);
+    height: clamp(120px, 40vw, 170px);
+    border-radius: 999px;
+    border: 4px solid #d4b06a;
+}
+
+.tpl-juris-prime .bio-page-shell .bio-kicker {
+    color: #d4b06a !important;
+    letter-spacing: 0.22em;
+}
+
+.tpl-juris-prime .bio-page-shell .links-wrapper {
+    background: #ebebeb;
+    border-radius: clamp(48px, 15vw, 220px) clamp(48px, 15vw, 220px) 0 0;
+    margin: 0 clamp(-12px, -3vw, -22px) -40px;
+    padding: clamp(24px, 5vw, 38px) clamp(16px, 4vw, 22px) 40px;
+    max-width: none;
+}
+
+.tpl-juris-prime .bio-page-shell .links-wrapper .bio-block-title,
+.tpl-juris-prime .bio-page-shell .links-wrapper .bio-block-subtitle,
+.tpl-juris-prime .bio-page-shell .links-wrapper .bio-copy,
+.tpl-juris-prime .bio-page-shell .links-wrapper .bio-badge,
+.tpl-juris-prime .bio-page-shell .links-wrapper .bio-faq-question,
+.tpl-juris-prime .bio-page-shell .links-wrapper .bio-faq-answer,
+.tpl-juris-prime .bio-page-shell .links-wrapper .bio-card-item h4,
+.tpl-juris-prime .bio-page-shell .links-wrapper .bio-card-item p,
+.tpl-juris-prime .bio-page-shell .links-wrapper .bio-info-item strong,
+.tpl-juris-prime .bio-page-shell .links-wrapper .bio-info-item span {
+    color: #1a1a1a !important;
+}
+
+.tpl-juris-prime .bio-page-shell .links-wrapper .bio-block {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.65);
+}
+
+.tpl-juris-prime .bio-page-shell .btn-bio,
+.tpl-juris-prime .bio-page-shell .bio-btn-preview {
+    background: #3a3b40 !important;
+    color: #f9f9f9 !important;
+    border-radius: 999px;
+    border: 2px solid #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+}
+
+.tpl-juris-prime .bio-page-shell .bio-footer {
+    color: #4b5563 !important;
+}
+
+.tpl-juris-prime .bio-page-shell .bio-footer a {
+    color: #3a3b40 !important;
+}

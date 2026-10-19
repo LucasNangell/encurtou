@@ -1,0 +1,78 @@
+body.tpl-luxe-portrait,
+#bioPreviewDevice.tpl-luxe-portrait {
+    --text: #2d1b1b !important;
+    --bg: #d8d1cc !important;
+    --primary: #5c3d3d !important;
+}
+
+.tpl-luxe-portrait.bio-page-shell {
+    background: transparent !important;
+    color: #2d1b1b !important;
+    padding-top: 0;
+    overflow-x: clip;
+}
+
+body.tpl-luxe-portrait .bio-public-bg-fixed,
+#bioPreviewDevice.tpl-luxe-portrait .bio-public-bg-fixed {
+    background: #d8d1cc !important;
+}
+
+body.tpl-luxe-portrait .bio-public-bg-fixed::after,
+#bioPreviewDevice.tpl-luxe-portrait .bio-public-bg-fixed::after {
+    content: none;
+}
+
+.tpl-luxe-portrait .bio-page-shell .bio-header {
+    margin: 0 clamp(-12px, -3vw, -22px) clamp(16px, 4vw, 20px);
+    width: calc(100% + clamp(24px, 6vw, 44px));
+    max-width: calc(100% + 44px);
+    box-sizing: border-box;
+    border-radius: 0;
+    min-height: min(320px, 48vh);
+    justify-content: end;
+    align-content: end;
+    border: none;
+    box-shadow: none;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.42)),
+        linear-gradient(140deg, #c08d5b, #9d6a46);
+    padding: clamp(20px, 5vw, 28px) clamp(16px, 4vw, 22px);
+    overflow: hidden;
+}
+
+.tpl-luxe-portrait .bio-page-shell .bio-header .bio-hero-copy .preview-name,
+.tpl-luxe-portrait .bio-page-shell .bio-header .bio-hero-copy .preview-bio,
+.tpl-luxe-portrait .bio-page-shell .bio-header .bio-hero-copy .bio-subtitle,
+.tpl-luxe-portrait .bio-page-shell .bio-header .bio-hero-copy .bio-kicker {
+    color: #fff8f0 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.tpl-luxe-portrait .bio-page-shell .bio-header .bio-hero-copy .preview-name {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.35rem, 5vw, 2.75rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+}
+
+.tpl-luxe-portrait .bio-page-shell .bio-avatar {
+    display: none;
+}
+
+.tpl-luxe-portrait .bio-page-shell .btn-bio,
+.tpl-luxe-portrait .bio-page-shell .bio-btn-preview {
+    border-radius: 999px;
+    background: transparent !important;
+    color: #402626 !important;
+    border: 1.5px solid #402626 !important;
+    text-transform: uppercase;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.tpl-luxe-portrait .bio-page-shell .bio-footer {
+    color: #5a3d3d !important;
+}
+
+.tpl-luxe-portrait .bio-page-shell .bio-footer a {
+    color: #402626 !important;
+}

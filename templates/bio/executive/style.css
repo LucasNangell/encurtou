@@ -1,0 +1,47 @@
+body.tpl-executive,
+#bioPreviewDevice.tpl-executive,
+.tpl-executive.bio-page-shell {
+    --text: #e2e8f0 !important;
+    --bg: #0f172a !important;
+    --primary: #60a5fa !important;
+    --bio-card: color-mix(in srgb, var(--bio-bg) 76%, #1d4ed8 24%);
+}
+
+.tpl-executive .bio-page-shell .bio-header {
+    grid-template-columns: 108px 1fr;
+    justify-items: start;
+    text-align: left;
+    border-radius: 24px;
+    border: 1px solid color-mix(in srgb, var(--bio-primary) 28%, transparent);
+}
+
+.tpl-executive .bio-page-shell .bio-avatar {
+    width: 108px;
+    height: 108px;
+    border-radius: 18px;
+}
+
+.tpl-executive .bio-page-shell .bio-block {
+    border-radius: 18px;
+    border-color: color-mix(in srgb, var(--bio-primary) 20%, transparent);
+}
+
+.tpl-executive .bio-page-shell .bio-action-grid,
+.tpl-executive .bio-page-shell .bio-social-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tpl-executive .bio-page-shell .btn-bio,
+.tpl-executive .bio-page-shell .bio-btn-preview {
+    border-radius: 12px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+    .tpl-executive .bio-page-shell .bio-header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+}

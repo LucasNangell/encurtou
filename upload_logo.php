@@ -1,16 +1,29 @@
 <?php
 header('Content-Type: application/json');
 require_once 'db.php';
+require_once 'team_permissions.php';
+require_once 'auth_guard.php';
 
-if (!isset($_SESSION['user_id'])) {
-    echo json_encode(['success' => false, 'message' => 'Não autorizado']);
+$userId = requireAuthenticatedUserNotBanned($pdo, true, false);
+
+$teamContext = teamResolveMembershipContext($pdo, (int)$userId);
+if (!teamCanEditContent((string)($teamContext['profile'] ?? 'editor'))) {
+    echo json_encode([
+        'success' => false,
+        'error' => 'permission_denied',
+        'message' => 'Seu perfil na equipe é Visualizador e não permite upload de logos.'
+    ]);
     exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['logo'])) {
     $file = $_FILES['logo'];
     $maxSize = 512 * 1024; // 512 KB
-    $allowedTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'image/webp'];
+    $allowedTypes = [
+        'image/jpeg' => 'jpg',
+        'image/png' => 'png',
+        'image/webp' => 'webp',
+    ];
 
     if ($file['error'] !== UPLOAD_ERR_OK) {
         echo json_encode(['success' => false, 'message' => 'Erro no upload do arquivo.']);
@@ -22,12 +35,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['logo'])) {
         exit;
     }
 
-    if (!in_array($file['type'], $allowedTypes)) {
-        echo json_encode(['success' => false, 'message' => 'Formato não suportado. Use JPG, PNG, SVG ou WEBP.']);
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $realMime = $finfo ? finfo_file($finfo, $file['tmp_name']) : '';
+    if ($finfo) {
+        finfo_close($finfo);
+    }
+
+    if (!is_string($realMime) || !array_key_exists($realMime, $allowedTypes)) {
+        echo json_encode(['success' => false, 'message' => 'Formato não suportado. Use JPG, PNG ou WEBP.']);
         exit;
     }
 
-    $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+    $ext = $allowedTypes[$realMime];
     $filename = 'logo_' . $_SESSION['user_id'] . '_' . time() . '.' . $ext;
     $targetPath = 'uploads/logos/' . $filename;
 

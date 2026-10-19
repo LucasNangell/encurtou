@@ -1,0 +1,14 @@
+/* Template: Classic */
+body.tpl-classic,
+#bioPreviewDevice.tpl-classic,
+.tpl-classic.bio-page-shell {
+    --text: #f8fafc !important;
+    --bg: #0f172a !important;
+    --primary: #1A8CFF !important;
+}
+
+.tpl-classic .mobile-screen,
+.tpl-classic.container {
+    align-items: center;
+    text-align: center;
+}

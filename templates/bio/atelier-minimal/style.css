@@ -1,0 +1,88 @@
+body.tpl-atelier-minimal,
+#bioPreviewDevice.tpl-atelier-minimal {
+    --text: #1f1f1f !important;
+    --bg: #f1efec !important;
+    --primary: #232428 !important;
+}
+
+.tpl-atelier-minimal.bio-page-shell {
+    background: transparent !important;
+    color: #1f1f1f !important;
+}
+
+body.tpl-atelier-minimal .bio-public-bg-fixed,
+#bioPreviewDevice.tpl-atelier-minimal .bio-public-bg-fixed {
+    background: linear-gradient(180deg, #f1efec 0 34%, #d9d5d1 34% 100%) !important;
+}
+
+body.tpl-atelier-minimal .bio-public-bg-fixed::after,
+#bioPreviewDevice.tpl-atelier-minimal .bio-public-bg-fixed::after {
+    content: none;
+}
+
+.tpl-atelier-minimal .bio-page-shell .bio-header {
+    margin-top: clamp(72px, 18vw, 110px);
+    background: #ffffff;
+    border-radius: clamp(20px, 5vw, 34px);
+    border: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: visible;
+    max-width: 100%;
+}
+
+.tpl-atelier-minimal .bio-page-shell .bio-header::before {
+    content: '';
+    position: absolute;
+    top: clamp(-80px, -20vw, -120px);
+    left: clamp(-12px, -3vw, -22px);
+    right: clamp(-12px, -3vw, -22px);
+    height: clamp(120px, 28vw, 170px);
+    border-radius: 30px 30px 0 0;
+    background: linear-gradient(120deg, #cfcfcf, #b8b8b8);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+/* Capa do hero: imagem na faixa superior (::before), não no .bio-header-cover-layer */
+.tpl-atelier-minimal .bio-page-shell .bio-header--has-cover::before {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.28)), var(--bio-atelier-cover);
+}
+
+.tpl-atelier-minimal .bio-page-shell .bio-header .bio-header-cover-layer {
+    display: none !important;
+}
+
+.tpl-atelier-minimal .bio-page-shell .bio-header .bio-hero-copy {
+    position: relative;
+    z-index: 1;
+}
+
+.tpl-atelier-minimal .bio-page-shell .bio-avatar {
+    width: clamp(120px, 36vw, 170px);
+    height: clamp(120px, 36vw, 170px);
+    margin-top: clamp(-90px, -22vw, -130px);
+    border-radius: 999px;
+    border: 9px solid #ece9e5;
+}
+
+.tpl-atelier-minimal .bio-page-shell .preview-name,
+.tpl-atelier-minimal .bio-page-shell .preview-bio,
+.tpl-atelier-minimal .bio-page-shell .bio-subtitle,
+.tpl-atelier-minimal .bio-page-shell .bio-kicker,
+.tpl-atelier-minimal .bio-page-shell .bio-copy,
+.tpl-atelier-minimal .bio-page-shell .bio-block-title,
+.tpl-atelier-minimal .bio-page-shell .bio-block-subtitle {
+    color: #1f1f1f !important;
+}
+
+.tpl-atelier-minimal .bio-page-shell .btn-bio,
+.tpl-atelier-minimal .bio-page-shell .bio-btn-preview {
+    background: #232428 !important;
+    color: #f8f8f8 !important;
+    border-radius: 999px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}

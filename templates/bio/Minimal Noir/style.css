@@ -1,0 +1,57 @@
+/* Template: Minimal Noir */
+body.tpl-noir,
+#bioPreviewDevice.tpl-noir {
+    --text: #e5e5e5 !important;
+    --bg: #0a0a0a !important;
+    --primary: #a3a3a3 !important;
+}
+
+.tpl-noir.bio-page-shell {
+    background: transparent !important;
+    color: #e5e5e5 !important;
+}
+
+body.tpl-noir .bio-public-bg-fixed,
+#bioPreviewDevice.tpl-noir .bio-public-bg-fixed {
+    background-color: #0a0a0a !important;
+}
+
+body.tpl-noir .bio-public-bg-fixed::after,
+#bioPreviewDevice.tpl-noir .bio-public-bg-fixed::after {
+    content: none;
+}
+
+.tpl-noir .bio-page-shell .bio-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 30px 15px 15px !important;
+}
+
+.tpl-noir .bio-page-shell .bio-avatar {
+    margin: 0 auto 20px auto !important;
+    border-radius: 4px !important;
+    width: 100px !important;
+    height: 100px !important;
+    filter: grayscale(100%) contrast(110%) !important;
+}
+
+.tpl-noir .bio-page-shell .bio-btn,
+.tpl-noir .bio-page-shell .btn-bio {
+    background: transparent !important;
+    border: 1px solid #333 !important;
+    border-radius: 4px !important;
+    color: #e5e5e5 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    font-size: 0.9rem !important;
+    font-weight: 400 !important;
+    transition: all 0.3s ease !important;
+}
+
+.tpl-noir .bio-page-shell .bio-btn:hover,
+.tpl-noir .bio-page-shell .btn-bio:hover {
+    background: #e5e5e5 !important;
+    color: #0a0a0a !important;
+    border-color: #e5e5e5 !important;
+}

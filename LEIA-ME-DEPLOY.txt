@@ -1,0 +1,47 @@
+LinkNeo.pro — Deploy na Hostinger
+================================
+
+Esta pasta contém apenas os arquivos necessários para publicação em produção.
+Envie TODO o conteúdo de public_html para o diretório public_html da Hostinger
+(gerenciador de arquivos ou SFTP).
+
+PASSO A PASSO
+-------------
+
+1. Upload
+   - Compacte esta pasta em .zip OU envie via SFTP/FileZilla.
+   - Extraia/envie na raiz do domínio (public_html).
+
+2. Banco de dados
+   - Crie o banco MySQL no painel Hostinger.
+   - Importe os scripts SQL de __nao_enviar_servidor (pasta de desenvolvimento,
+     NÃO vai para o servidor) na ordem indicada pela documentação do projeto.
+
+3. Segredos (obrigatório)
+   - Copie config_secrets.example.php para config_secrets.php no servidor.
+   - Preencha: DB_HOST, DB_NAME, DB_USER, DB_PASS, ASAAS_*, SMTP_*, GOOGLE_CLIENT_ID,
+     GEMINI_API_KEY, EDGE_* e PUBLIC_BASE_URL=https://linkneo.pro
+   - O arquivo config_secrets.php fica bloqueado pelo .htaccess.
+
+4. Permissões
+   - uploads/ e subpastas uploads/bio/ e uploads/logos/ devem permitir escrita (755 ou 775).
+
+5. PHP
+   - Recomendado: PHP 8.x
+   - mod_rewrite ativo (padrão na Hostinger)
+
+6. Pós-deploy
+   - Acesse https://linkneo.pro e teste login, criação de link e upload de imagem.
+   - Configure webhook Asaas apontando para https://linkneo.pro/webhook_asaas.php
+   - Healthcheck (opcional): healthcheck.php?token=SEU_HEALTHCHECK_TOKEN
+
+O QUE NÃO ENVIAR
+----------------
+- __nao_enviar_servidor/ (migrações, debug, docs internas)
+- scratch/, cloudflare/, .env, config_secrets.php local
+- Arquivos .md, .sql, .log
+
+REGENERAR ESTA PASTA
+--------------------
+No projeto local, execute:
+  powershell -File build-public_html.ps1

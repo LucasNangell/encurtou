@@ -1,0 +1,94 @@
+body.tpl-urban-strike,
+#bioPreviewDevice.tpl-urban-strike {
+    --text: #ffffff !important;
+    --bg: #040404 !important;
+    --primary: #ffb400 !important;
+}
+
+.tpl-urban-strike.bio-page-shell {
+    background: transparent !important;
+    color: #ffffff !important;
+    overflow-x: clip;
+}
+
+body.tpl-urban-strike .bio-public-bg-fixed,
+#bioPreviewDevice.tpl-urban-strike .bio-public-bg-fixed {
+    background: linear-gradient(180deg, #ffb400 0 29%, #040404 29% 100%) !important;
+}
+
+body.tpl-urban-strike .bio-public-bg-fixed::after,
+#bioPreviewDevice.tpl-urban-strike .bio-public-bg-fixed::after {
+    content: none;
+}
+
+.tpl-urban-strike .bio-page-shell .bio-header {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin-top: 8px;
+    padding-top: clamp(8px, 2vw, 16px);
+}
+
+/* Faixa superior amarela: texto escuro para contraste (evita ouro sobre ouro). */
+.tpl-urban-strike .bio-page-shell .bio-header .bio-hero-copy .preview-name,
+.tpl-urban-strike .bio-page-shell .bio-header .bio-hero-copy .bio-kicker {
+    color: #141414 !important;
+}
+
+.tpl-urban-strike .bio-page-shell .bio-header .bio-hero-copy .preview-bio,
+.tpl-urban-strike .bio-page-shell .bio-header .bio-hero-copy .bio-subtitle {
+    color: #2a2a2a !important;
+}
+
+.tpl-urban-strike .bio-page-shell .bio-avatar {
+    width: clamp(120px, 38vw, 160px);
+    height: clamp(120px, 38vw, 160px);
+    border-radius: 999px;
+    border: 6px solid #070707;
+}
+
+.tpl-urban-strike .bio-page-shell .btn-bio,
+.tpl-urban-strike .bio-page-shell .bio-btn-preview {
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: clamp(0.85rem, 3vw, 1.05rem);
+    text-transform: uppercase;
+    border: none;
+}
+
+.tpl-urban-strike .bio-page-shell .bio-block--links .bio-action-grid a:nth-child(odd),
+.tpl-urban-strike .bio-page-shell .bio-block--cta .bio-action-grid a:nth-child(odd) {
+    background: #ffb400 !important;
+    color: #060606 !important;
+}
+
+.tpl-urban-strike .bio-page-shell .bio-block--links .bio-action-grid a:nth-child(even),
+.tpl-urban-strike .bio-page-shell .bio-block--cta .bio-action-grid a:nth-child(even) {
+    background: #f4f4f4 !important;
+    color: #060606 !important;
+}
+
+.tpl-urban-strike .bio-page-shell .bio-block--social .bio-social-grid a {
+    background: #ffb400 !important;
+    color: #060606 !important;
+    border: 2px solid #040404 !important;
+}
+
+.tpl-urban-strike .bio-page-shell .bio-content .bio-block-title,
+.tpl-urban-strike .bio-page-shell .bio-content .bio-block-subtitle,
+.tpl-urban-strike .bio-page-shell .bio-content .bio-copy {
+    color: #f4f4f4 !important;
+}
+
+.tpl-urban-strike .bio-page-shell .bio-block {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.tpl-urban-strike .bio-page-shell .bio-footer {
+    color: #d4d4d4 !important;
+}
+
+.tpl-urban-strike .bio-page-shell .bio-footer a {
+    color: #ffb400 !important;
+}

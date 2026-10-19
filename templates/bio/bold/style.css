@@ -1,0 +1,30 @@
+/* Template: Minimalist Bold */
+body.tpl-bold,
+#bioPreviewDevice.tpl-bold,
+.tpl-bold.bio-page-shell {
+    --text: #f8fafc !important;
+    --bg: #020617 !important;
+    --primary: #fbbf24 !important;
+}
+
+.tpl-bold .bio-page-shell .bio-avatar {
+    display: none !important;
+}
+
+.tpl-bold .bio-page-shell .preview-name,
+.tpl-bold .bio-page-shell h1 {
+    font-size: clamp(1.5rem, 5vw, 2.2rem) !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    margin-bottom: 20px !important;
+    line-height: 1.1 !important;
+}
+
+.tpl-bold .bio-page-shell .bio-btn-preview,
+.tpl-bold .bio-page-shell .btn-bio {
+    background: var(--primary) !important;
+    color: #000 !important;
+    border: 3px solid #000 !important;
+    box-shadow: 6px 6px 0 #000 !important;
+    font-weight: 800 !important;
+}

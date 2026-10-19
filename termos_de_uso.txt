@@ -1,0 +1,68 @@
+Termos de Uso – encurtou.pro
+1. Aceitação e vigência
+
+Ao utilizar o encurtou.pro (o “Site” ou “Plataforma”), o usuário declara ter lido e compreendido estes Termos de Uso e a Política de Privacidade associada. O acesso e/ou cadastro significam concordância integral. Caso não concorde, o usuário deve cessar o uso imediatamente. A encurtou.pro reserva‑se o direito de alterar estes termos a qualquer momento; novas versões serão publicadas no site e entrarão em vigor na data indicada. O uso continuado após a publicação significa aceitação.
+
+2. Definições
+Usuário: pessoa natural ou jurídica que cria conta ou utiliza serviços de encurtamento de links, geração de QR codes e criação de páginas “bio” disponibilizados pela encurtou.pro.
+Serviços: conjunto de funcionalidades oferecidas pela encurtou.pro, incluindo encurtamento de URL, geração de QR Codes dinâmicos, criação de páginas de destino personalizadas (“bio pages”), monitoramento e análise de tráfego, gestão de campanhas e equipes.
+Plano Free ou Assinatura: modelo de oferta de serviços gratuitos com limitações e planos pagos (mensais ou anuais) com recursos ampliados.
+3. Descrição dos Serviços
+
+A plataforma permite transformar links longos em URLs curtas personalizáveis, criar QR codes estáticos ou dinâmicos, associar vários links a uma “bio page” e acompanhar métricas de cliques e conversões. Recursos adicionais incluem teste A/B entre destinos, gestão de equipes, campanhas de marketing e relatórios analíticos. A encurtou.pro não hospeda o conteúdo das páginas externas; apenas redireciona os usuários para os endereços informados.
+
+4. Cadastro e responsabilidade do usuário
+
+Para utilizar determinadas funcionalidades, o usuário deve criar conta informando dados verdadeiros e completos (nome, e‑mail, telefone e dados de faturamento). Ele é responsável por manter confidenciais suas credenciais de acesso. É proibido criar contas em nome de terceiros sem autorização ou repassar a senha. Quaisquer ações realizadas com o login do usuário serão consideradas de sua exclusiva responsabilidade.
+
+O usuário declara ser civilmente capaz. Caso represente pessoa jurídica, declara ter poderes para aceitar estes termos. A plataforma não é destinada a menores de 18 anos; caso haja uso por menores, deverá ocorrer com autorização e supervisão dos responsáveis legais.
+
+5. Uso aceitável e proibições
+
+A encurtou.pro destina‑se a fins lícitos. É proibido:
+
+Utilizar links para atividades ilegais, phishing, fraude, engenharia social ou coleta indevida de dados.
+Distribuir malware, vírus ou quaisquer códigos maliciosos.
+Enviar mensagens em massa não solicitadas (spam).
+Publicar ou divulgar conteúdo que viole direitos autorais, marcas ou outros direitos de propriedade intelectual.
+Utilizar o serviço para armazenar ou processar dados sensíveis sem base legal apropriada.
+
+A violação acarretará suspensão ou cancelamento imediato da conta, sem ressarcimento, além de eventuais responsabilidades civis e criminais.
+
+6. Planos, assinaturas, pagamentos e cancelamento
+
+A encurtou.pro oferece planos gratuitos e planos pagos com renovação automática conforme o ciclo escolhido (mensal ou anual). O processamento dos pagamentos é realizado por parceiros como a plataforma Asaas. Os valores e benefícios de cada plano são divulgados na página de assinaturas e podem sofrer alterações mediante aviso prévio.
+
+O usuário poderá cancelar a renovação automática a qualquer momento no painel de controle. Em caso de desistência de uma assinatura recém‑contratada, o reembolso seguirá as normas do Código de Defesa do Consumidor (Direito de Arrependimento de 7 dias). Após esse prazo, as cobranças já realizadas não serão reembolsadas. A conta permanecerá ativa até o fim do ciclo já pago.
+
+7. Propriedade intelectual
+
+Todos os elementos da plataforma (marcas, logotipos, softwares, interface e conteúdos) são de titularidade da encurtou.pro ou licenciados. O usuário tem licença não exclusiva e intransferível para utilizar os serviços conforme estes termos. É proibida a reprodução, distribuição, engenharia reversa ou modificação sem autorização prévia por escrito.
+
+8. Conteúdo gerado pelo usuário
+
+Ao encurtar um link, criar QR Codes ou páginas “bio”, o usuário declara ter autorização para utilizar o conteúdo de destino e não violar direitos de terceiros. A encurtou.pro não se responsabiliza pela veracidade ou legalidade dos destinos informados, mas poderá remover ou desativar links a qualquer momento em caso de denúncia ou violação destes termos.
+
+O usuário concede à encurtou.pro licença mundial, gratuita e não exclusiva para hospedar, reproduzir, modificar e exibir o conteúdo estritamente necessário à prestação dos serviços (ex.: geração e hospedagem de páginas “bio” e QR codes), respeitando os limites definidos na Política de Privacidade.
+
+9. Limitações de responsabilidade
+
+A encurtou.pro envida esforços para manter a plataforma disponível, segura e sem erros, mas não garante que o serviço será ininterrupto ou livre de falhas. A responsabilidade da encurtou.pro limita‑se ao valor efetivamente pago pelo usuário nos últimos 12 meses ou, em caso de plano gratuito, fica restrita a R$0,00. A encurtou.pro não se responsabiliza por danos indiretos, lucros cessantes ou prejuízos decorrentes de:
+
+Falhas de acesso à internet ou de terceiros.
+Uso inadequado pelo usuário.
+Conteúdos de sites de terceiros acessados via links encurtados.
+
+A encurtou.pro não garante resultados específicos, sendo o uso dos serviços feito por conta e risco do usuário.
+
+10. Suporte e contato
+
+Dúvidas, solicitações ou notificações poderão ser encaminhadas pelo canal de suporte indicado na plataforma ou via e‑mail de contato. A encurtou.pro poderá solicitar dados adicionais para validar identidades e atender às solicitações.
+
+11. Modificações nos termos
+
+Estes termos poderão ser modificados a qualquer momento para refletir mudanças nos serviços, na legislação ou em práticas internas. Alterações materiais serão comunicadas por meio do site ou por e‑mail. Caso o usuário não concorde com as alterações, poderá cancelar a conta; o uso contínuo após a publicação representará aceitação.
+
+12. Lei aplicável e foro
+
+Estes Termos são regidos pelas leis da República Federativa do Brasil, especialmente a Lei Geral de Proteção de Dados Pessoais – LGPD (Lei nº 13.709/2018) que protege a liberdade, a privacidade e a personalidade de cada indivíduo, e o Código de Defesa do Consumidor. Fica eleito o foro da Comarca de Brasília/DF, com renúncia a qualquer outro, por mais privilegiado que seja, para dirimir quaisquer controvérsias oriundas destes Termos. A encurtou.pro poderá optar por solucionar controvérsias por meio de mediação ou arbitragem, desde que haja concordância de ambas as partes.

@@ -1,0 +1,109 @@
+/* Template: Modern Split */
+body.tpl-split,
+#bioPreviewDevice.tpl-split {
+    --text: #1e293b !important;
+    --bg: #f8fafc !important;
+    --primary: #0ea5e9 !important;
+}
+
+.tpl-split.bio-page-shell {
+    background: transparent !important;
+}
+
+body.tpl-split .bio-public-bg-fixed,
+#bioPreviewDevice.tpl-split .bio-public-bg-fixed {
+    background: var(--bg) !important;
+}
+
+body.tpl-split .bio-public-bg-fixed::after,
+#bioPreviewDevice.tpl-split .bio-public-bg-fixed::after {
+    content: none;
+}
+
+.tpl-split .mobile-screen,
+.tpl-split.container,
+.tpl-split.bio-page-shell.container {
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+.tpl-split .bio-page-shell .bio-header {
+    height: auto;
+    min-height: 200px;
+    width: 100%;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    background-size: cover !important;
+    background-position: center !important;
+    justify-content: center;
+    position: relative;
+    padding: clamp(16px, 4vw, 24px);
+    overflow: hidden;
+}
+
+.tpl-split.container {
+    max-width: 100% !important;
+}
+
+.tpl-split.container .bio-header {
+    width: 50%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 40px;
+    text-align: left;
+}
+
+.tpl-split.container .links-wrapper,
+.tpl-split.container .links {
+    width: 50%;
+    padding: 60px 40px;
+}
+
+.tpl-split.container .bio-avatar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .tpl-split.container,
+    .tpl-split.bio-page-shell.container {
+        flex-direction: column !important;
+    }
+    .tpl-split.container .bio-header {
+        width: 100%;
+        height: auto;
+        min-height: 42vh;
+        position: relative;
+    }
+    .tpl-split.container .links-wrapper,
+    .tpl-split.container .links {
+        width: 100%;
+        padding: 24px 16px;
+    }
+}
+
+.tpl-split .bio-page-shell .bio-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.75));
+    pointer-events: none;
+}
+
+.tpl-split .bio-page-shell .bio-header .bio-hero-copy,
+.tpl-split .bio-page-shell .bio-header .preview-name,
+.tpl-split .bio-page-shell .bio-header .preview-bio,
+.tpl-split .bio-page-shell .bio-header .bio-subtitle,
+.tpl-split .bio-page-shell .bio-header .bio-kicker {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    color: #ffffff !important;
+}
+
+.tpl-split .bio-page-shell .preview-links,
+.tpl-split .bio-page-shell .bio-links {
+    padding: 24px 16px;
+}

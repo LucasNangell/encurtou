@@ -1,0 +1,23 @@
+/* Template: Floating */
+body.tpl-floating,
+#bioPreviewDevice.tpl-floating,
+.tpl-floating.bio-page-shell {
+    --text: #f8fafc !important;
+    --bg: #111827 !important;
+    --primary: #1A8CFF !important;
+}
+
+.tpl-floating .mobile-screen,
+.tpl-floating .bio-page-shell .links-wrapper {
+    gap: 25px !important;
+}
+
+.tpl-floating .bio-page-shell .bio-btn-preview,
+.tpl-floating .bio-page-shell .btn-bio {
+    background: var(--primary) !important;
+    color: var(--bg) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
+    transform: translateY(-5px) !important;
+}

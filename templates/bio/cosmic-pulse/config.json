@@ -1,0 +1,10 @@
+{
+    "id": 18,
+    "name": "Cosmic Pulse",
+    "slug": "cosmic-pulse",
+    "description": "Template vibrante com capa estilizada e perfil central. Use capa 16:9 e foto de perfil 1:1.",
+    "category": "Creator",
+    "ideal_for": "Marketing, social media e creators",
+    "page_types": ["bio", "landing", "campaign"],
+    "premium": true
+}

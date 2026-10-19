@@ -1,0 +1,10 @@
+{
+    "id": 17,
+    "name": "Luxe Portrait",
+    "slug": "luxe-portrait",
+    "description": "Template editorial com foco em imagem de capa. Use foto de capa em proporcao 4:5.",
+    "category": "Editorial",
+    "ideal_for": "Beleza, moda, estetica e branding",
+    "page_types": ["bio", "landing"],
+    "premium": true
+}

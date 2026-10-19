@@ -1,0 +1,27 @@
+body.tpl-formulario,
+#bioPreviewDevice.tpl-formulario,
+.tpl-formulario.bio-page-shell {
+    --text: #f1f5f9 !important;
+    --bg: #0f172a !important;
+    --primary: #1A8CFF !important;
+}
+
+.tpl-formulario .mobile-screen,
+.tpl-formulario.container {
+    align-items: center;
+    text-align: center;
+}
+
+.tpl-formulario .bio-page-shell .bio-block--form,
+.tpl-formulario .bio-page-shell .bio-block--form .bio-public-form {
+    text-align: left;
+}
+
+.tpl-formulario .bio-page-shell .bio-block--form .btn-bio {
+    margin-top: 6px;
+}
+
+.tpl-formulario .bio-page-shell .bio-form-label,
+.tpl-formulario .bio-page-shell .bio-form-hint {
+    color: color-mix(in srgb, var(--bio-text) 92%, transparent);
+}

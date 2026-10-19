@@ -1,0 +1,95 @@
+body.tpl-cosmic-pulse,
+#bioPreviewDevice.tpl-cosmic-pulse {
+    --text: #121212 !important;
+    --bg: #e7e7e9 !important;
+    --primary: #1336bf !important;
+}
+
+.tpl-cosmic-pulse.bio-page-shell {
+    background: transparent !important;
+    color: #121212 !important;
+    overflow-x: clip;
+}
+
+body.tpl-cosmic-pulse .bio-public-bg-fixed,
+#bioPreviewDevice.tpl-cosmic-pulse .bio-public-bg-fixed {
+    background: #e7e7e9 !important;
+}
+
+body.tpl-cosmic-pulse .bio-public-bg-fixed::after,
+#bioPreviewDevice.tpl-cosmic-pulse .bio-public-bg-fixed::after {
+    content: none;
+}
+
+.tpl-cosmic-pulse .bio-page-shell .bio-content,
+.tpl-cosmic-pulse .bio-page-shell .links-wrapper,
+.tpl-cosmic-pulse .bio-page-shell .bio-footer {
+    color: #121212 !important;
+}
+
+.tpl-cosmic-pulse .bio-page-shell .bio-footer a {
+    color: #1336bf !important;
+}
+
+.tpl-cosmic-pulse .bio-page-shell .bio-header {
+    margin: 0 clamp(-12px, -3vw, -22px) 0;
+    width: calc(100% + clamp(24px, 6vw, 44px));
+    max-width: calc(100% + 44px);
+    box-sizing: border-box;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background:
+        radial-gradient(circle at 20% 25%, rgba(255, 255, 255, 0.4), transparent 28%),
+        radial-gradient(circle at 76% 30%, rgba(84, 95, 255, 0.45), transparent 36%),
+        linear-gradient(180deg, #0d1653, #111730);
+    min-height: min(220px, 38vh);
+    justify-content: flex-end;
+    padding: clamp(16px, 4vw, 24px) clamp(16px, 4vw, 22px) clamp(56px, 12vw, 72px);
+    overflow: visible;
+}
+
+.tpl-cosmic-pulse .bio-page-shell .bio-header .bio-hero-copy .preview-name,
+.tpl-cosmic-pulse .bio-page-shell .bio-header .bio-hero-copy .preview-bio,
+.tpl-cosmic-pulse .bio-page-shell .bio-header .bio-hero-copy .bio-subtitle,
+.tpl-cosmic-pulse .bio-page-shell .bio-header .bio-hero-copy .bio-kicker {
+    color: #e8ecff !important;
+}
+
+.tpl-cosmic-pulse .bio-page-shell .bio-header .bio-hero-copy .preview-name {
+    color: #b8c4ff !important;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.tpl-cosmic-pulse .bio-page-shell .bio-header .bio-avatar {
+    width: clamp(120px, 34vw, 170px);
+    height: clamp(120px, 34vw, 170px);
+    margin-bottom: clamp(-18px, -4vw, -26px);
+    border-radius: 999px;
+    border: 10px solid #e7e7e9;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.tpl-cosmic-pulse .bio-page-shell .bio-header .bio-hero-copy {
+    margin-top: clamp(14px, 3.5vw, 22px);
+    width: 100%;
+    min-width: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.tpl-cosmic-pulse .bio-page-shell .links-wrapper {
+    padding-top: clamp(28px, 6vw, 40px);
+}
+
+.tpl-cosmic-pulse .bio-page-shell .btn-bio,
+.tpl-cosmic-pulse .bio-page-shell .bio-btn-preview {
+    border-radius: 999px;
+    background: #1336bf !important;
+    color: #f2f3ff !important;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}

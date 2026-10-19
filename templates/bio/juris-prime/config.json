@@ -1,0 +1,10 @@
+{
+    "id": 15,
+    "name": "Juris Prime",
+    "slug": "juris-prime",
+    "description": "Template premium para posicionamento profissional com destaque institucional. Use foto de perfil 1:1.",
+    "category": "Jurídico",
+    "ideal_for": "Advocacia, consultoria e serviços premium",
+    "page_types": ["bio", "landing", "campaign"],
+    "premium": true
+}

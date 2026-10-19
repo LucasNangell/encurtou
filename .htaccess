@@ -2,6 +2,38 @@
 RewriteEngine On
 RewriteBase /
 
+# Bloqueia acesso direto a arquivos sensíveis
+<Files ".env">
+    Require all denied
+</Files>
+<Files ".env.example">
+    Require all denied
+</Files>
+<Files "config_secrets.php">
+    Require all denied
+</Files>
+<Files "config_secrets.example.php">
+    Require all denied
+</Files>
+<Files "config_runtime.php">
+    Require all denied
+</Files>
+<FilesMatch "^(security_financial_hardening_migration\.sql|run_security_financial_hardening_migration\.php)$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "\.(sql|md|markdown|log)$">
+    Require all denied
+</FilesMatch>
+
+# Headers de segurança (sem quebrar integrações externas atuais)
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self)"
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
 # Forçar HTTPS (Compatível com Cloudflare e Proxies)
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
@@ -9,10 +41,44 @@ RewriteCond %{HTTP_HOST} !^localhost$ [NC]
 RewriteCond %{HTTP_HOST} !^127\.0\.0\.1$ [NC]
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+</IfModule>
+
+# Cache e compressão básicos para assets estáticos
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain text/html text/css application/javascript application/json
+</IfModule>
+
 # Ignorar arquivos e pastas reais (CSS, JS, Imagens, etc)
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
+
+# Bloqueio explícito de diretórios não publicáveis
+RewriteRule ^(__nao_enviar_servidor|scratch)(/|$) - [F,L,NC]
+
+# Página comercial independente
+RewriteRule ^marketing/?$ marketing.php [L,QSA]
+
+# Página de boas-vindas pós-assinatura (URL fixa para conversões / Google Ads)
+RewriteRule ^boasvindas/?$ boasvindas.php [L,QSA]
+
+# Páginas de assinaturas e planos com acesso direto
+RewriteRule ^assinatura/?$ assinatura.php [L,QSA]
+RewriteRule ^planos/?$ assinatura.php [L,QSA]
 
 # Encaminhar tudo para o redirecionador
 RewriteRule ^(.*)$ redirect.php?slug=$1 [L,QSA]

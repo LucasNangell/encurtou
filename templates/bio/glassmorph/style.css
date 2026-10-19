@@ -1,0 +1,61 @@
+/* Template: Glassmorphism */
+body.tpl-glass,
+#bioPreviewDevice.tpl-glass {
+    --text: #0f172a !important;
+    --bg: #c7e2ff !important;
+    --primary: #4f46e5 !important;
+}
+
+.tpl-glass.bio-page-shell {
+    background: transparent !important;
+    color: #0f172a !important;
+    min-height: 50vh !important;
+}
+
+body.tpl-glass .bio-public-bg-fixed,
+#bioPreviewDevice.tpl-glass .bio-public-bg-fixed {
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%) !important;
+}
+
+body.tpl-glass .bio-public-bg-fixed::after,
+#bioPreviewDevice.tpl-glass .bio-public-bg-fixed::after {
+    content: none;
+}
+
+.tpl-glass .bio-page-shell .bio-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 20px 10px !important;
+    background: rgba(255, 255, 255, 0.22) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.tpl-glass .bio-page-shell .bio-avatar {
+    margin: 0 auto 15px auto !important;
+    border-radius: 50% !important;
+    width: 96px !important;
+    height: 96px !important;
+    border: 3px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15) !important;
+}
+
+.tpl-glass .bio-page-shell .bio-btn,
+.tpl-glass .bio-page-shell .btn-bio {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 16px !important;
+    color: #0f172a !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+.tpl-glass .bio-page-shell .bio-btn:hover,
+.tpl-glass .bio-page-shell .btn-bio:hover {
+    background: rgba(255, 255, 255, 0.4) !important;
+    transform: translateY(-2px) !important;
+}

@@ -1,0 +1,56 @@
+/* Template: Soft Neumorphism */
+body.tpl-neumorph,
+#bioPreviewDevice.tpl-neumorph {
+    --text: #374151 !important;
+    --bg: #e0e5ec !important;
+    --primary: #6366f1 !important;
+}
+
+.tpl-neumorph.bio-page-shell {
+    background: transparent !important;
+    color: #374151 !important;
+}
+
+body.tpl-neumorph .bio-public-bg-fixed,
+#bioPreviewDevice.tpl-neumorph .bio-public-bg-fixed {
+    background-color: #e0e5ec !important;
+}
+
+body.tpl-neumorph .bio-public-bg-fixed::after,
+#bioPreviewDevice.tpl-neumorph .bio-public-bg-fixed::after {
+    content: none;
+}
+
+.tpl-neumorph .bio-page-shell .bio-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 30px 10px !important;
+    background: rgba(255, 255, 255, 0.35) !important;
+}
+
+.tpl-neumorph .bio-page-shell .bio-avatar {
+    margin: 0 auto 20px auto !important;
+    border-radius: 50% !important;
+    width: 90px !important;
+    height: 90px !important;
+    padding: 4px !important;
+    background-color: #e0e5ec !important;
+    box-shadow: 6px 6px 12px #a3b1c6, -6px -6px 12px #ffffff !important;
+}
+
+.tpl-neumorph .bio-page-shell .bio-btn,
+.tpl-neumorph .bio-page-shell .btn-bio {
+    background-color: #e0e5ec !important;
+    border: none !important;
+    border-radius: 50px !important;
+    color: #374151 !important;
+    font-weight: 600 !important;
+    box-shadow: 6px 6px 12px #a3b1c6, -6px -6px 12px #ffffff !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.tpl-neumorph .bio-page-shell .bio-btn:active,
+.tpl-neumorph .bio-page-shell .btn-bio:active {
+    box-shadow: inset 4px 4px 8px #a3b1c6, inset -4px -4px 8px #ffffff !important;
+}

@@ -1,0 +1,32 @@
+/* Template: Corporate */
+body.tpl-corporate,
+#bioPreviewDevice.tpl-corporate,
+.tpl-corporate.bio-page-shell {
+    --text: #e2e8f0 !important;
+    --bg: #0f172a !important;
+    --primary: #38bdf8 !important;
+}
+
+.tpl-corporate .bio-page-shell .bio-header {
+    display: grid !important;
+    grid-template-columns: 80px 1fr !important;
+    gap: 15px !important;
+    text-align: left !important;
+    align-items: center !important;
+    padding: clamp(12px, 3vw, 20px) !important;
+}
+
+@media (max-width: 480px) {
+    .tpl-corporate .bio-page-shell .bio-header {
+        grid-template-columns: 1fr !important;
+        justify-items: center;
+        text-align: center;
+    }
+}
+
+.tpl-corporate .bio-page-shell .bio-avatar {
+    margin: 0 !important;
+    border-radius: 12px !important;
+    width: 80px !important;
+    height: 80px !important;
+}

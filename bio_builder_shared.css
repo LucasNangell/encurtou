@@ -1,0 +1,578 @@
+:root {
+    --bio-shell-max: 960px;
+}
+
+.bio-page-shell {
+    --bio-bg: var(--bg, #0f172a);
+    --bio-primary: var(--primary, #1A8CFF);
+    --bio-text: var(--text, #ffffff);
+    --bio-card: color-mix(in srgb, var(--bio-bg) 82%, white 18%);
+    --bio-card-strong: color-mix(in srgb, var(--bio-bg) 70%, white 30%);
+    --bio-border: color-mix(in srgb, var(--bio-text) 12%, transparent);
+    --bio-soft: color-mix(in srgb, var(--bio-primary) 14%, transparent);
+    position: relative;
+    min-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    color: var(--bio-text);
+    padding: 28px 22px 40px;
+    font-family: 'Manrope', sans-serif;
+    background: transparent;
+    overflow-x: clip;
+    overflow-y: visible;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Fundo full-viewport FIXO — fora do .bio-page-shell para não ser arrastado pelo scroll nem preso a overflow/transform (preview mobile).
+ */
+.bio-public-bg-fixed {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    box-sizing: border-box;
+    background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--primary, var(--bio-primary, #1A8CFF)) 16%, transparent), transparent 32%),
+        linear-gradient(180deg, color-mix(in srgb, var(--bg, var(--bio-bg, #0f172a)) 88%, black 12%), var(--bg, var(--bio-bg, #0f172a)));
+}
+
+.bio-public-bg-fixed::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 22%),
+        radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.04), transparent 28%);
+    pointer-events: none;
+}
+
+main.bio-public-wrap {
+    position: relative;
+    z-index: 1;
+}
+
+    position: relative;
+    isolation: isolate;
+    min-height: 100%;
+}
+
+#bio-live-preview > .bio-public-bg-fixed {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+}
+
+#bio-live-preview > .bio-page-shell {
+    position: relative;
+    z-index: 1;
+}
+
+.bio-page-shell > * {
+    position: relative;
+    z-index: 1;
+}
+
+.bio-page-shell .bio-content,
+.bio-page-shell .links-wrapper {
+    color: inherit;
+}
+
+.bio-page-shell .bio-header {
+    position: relative;
+    display: grid;
+    gap: 14px;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 28px 22px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    border: 1px solid var(--bio-border);
+    border-radius: 28px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+.bio-page-shell .bio-header-cover-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.bio-page-shell .bio-header--has-cover .bio-header-cover-layer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.42));
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.bio-page-shell .bio-header .bio-avatar,
+.bio-page-shell .bio-header .bio-hero-copy {
+    position: relative;
+    z-index: 1;
+}
+
+.bio-page-shell .bio-header.bio-hero-align-left {
+    justify-items: start;
+    text-align: left;
+}
+
+.bio-page-shell .bio-avatar {
+    width: 94px;
+    height: 94px;
+    border-radius: 28px;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid var(--bio-primary);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.22);
+}
+
+.bio-page-shell .bio-avatar.bio-avatar--circle {
+    border-radius: 999px;
+}
+
+.bio-page-shell .bio-avatar.bio-avatar--square {
+    border-radius: 0;
+}
+
+.bio-page-shell .bio-avatar.bio-avatar--rounded {
+    border-radius: 28px;
+}
+
+.bio-page-shell .bio-avatar.bio-avatar--soft {
+    border-radius: 14px;
+}
+
+.bio-page-shell .bio-avatar.bio-avatar--banner {
+    width: 100%;
+    height: 170px;
+    border-radius: 0;
+    border: 0;
+}
+
+.bio-page-shell .bio-hero-copy {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+}
+
+.bio-page-shell .preview-name,
+.bio-page-shell .preview-bio,
+.bio-page-shell .bio-subtitle,
+.bio-page-shell .bio-copy,
+.bio-page-shell .bio-block-title,
+.bio-page-shell .bio-block-subtitle {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.bio-page-shell .bio-action-grid,
+.bio-page-shell .bio-social-grid,
+.bio-page-shell .bio-card-grid,
+.bio-page-shell .bio-gallery-grid {
+    min-width: 0;
+}
+
+.bio-page-shell .bio-action-grid > a,
+.bio-page-shell .bio-social-grid > a,
+.bio-page-shell .bio-card-grid > article,
+.bio-page-shell .bio-gallery-grid > article {
+    min-width: 0;
+}
+
+.bio-page-shell .bio-kicker {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--bio-primary) 78%, white 22%);
+}
+
+.bio-page-shell .preview-name,
+.bio-page-shell .bio-title {
+    font-size: clamp(1.55rem, 2vw, 2.35rem);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    color: var(--bio-text);
+}
+
+.bio-page-shell .preview-bio,
+.bio-page-shell .bio-subtitle,
+.bio-page-shell .bio-copy {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: color-mix(in srgb, var(--bio-text) 84%, transparent);
+}
+
+.bio-page-shell .bio-meta-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.bio-page-shell .bio-meta-pill,
+.bio-page-shell .bio-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--bio-border);
+    background: rgba(255, 255, 255, 0.06);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.bio-page-shell .links-wrapper {
+    display: grid;
+    gap: 16px;
+}
+
+.bio-page-shell .bio-content {
+    display: grid;
+    gap: 16px;
+}
+
+.bio-page-shell .bio-block {
+    border-radius: 24px;
+    border: 1px solid var(--bio-border);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    padding: 20px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.bio-page-shell .bio-block-title {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+}
+
+.bio-page-shell .bio-block-subtitle {
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--bio-text) 70%, transparent);
+    margin-top: -2px;
+    margin-bottom: 14px;
+}
+
+.bio-page-shell .bio-block--divider {
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.bio-page-shell .bio-divider-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--bio-text) 25%, transparent), transparent);
+}
+
+.bio-page-shell .bio-divider-label {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: color-mix(in srgb, var(--bio-text) 55%, transparent);
+}
+
+.bio-page-shell .links,
+.bio-page-shell .preview-links,
+.bio-page-shell .bio-action-grid,
+.bio-page-shell .bio-social-grid,
+.bio-page-shell .bio-post-list,
+.bio-page-shell .bio-stack-list,
+.bio-page-shell .bio-contact-list,
+.bio-page-shell .bio-info-list {
+    display: grid;
+    gap: 12px;
+}
+
+.bio-page-shell .bio-action-grid.grid,
+.bio-page-shell .bio-social-grid.grid,
+.bio-page-shell .bio-card-grid,
+.bio-page-shell .bio-gallery-grid,
+.bio-page-shell .bio-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.bio-page-shell .bio-btn-preview,
+.bio-page-shell .btn-bio,
+.bio-page-shell .bio-pill-link {
+    width: 100%;
+    min-height: 56px;
+    padding: 15px 18px;
+    border-radius: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    border: 1px solid transparent;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.bio-page-shell .bio-btn-preview:hover,
+.bio-page-shell .btn-bio:hover,
+.bio-page-shell .bio-pill-link:hover {
+    transform: translateY(-2px);
+}
+
+.bio-page-shell .bio-card-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.bio-page-shell .bio-card-item,
+.bio-page-shell .bio-gallery-item,
+.bio-page-shell .bio-post-item,
+.bio-page-shell .bio-faq-item,
+.bio-page-shell .bio-info-item,
+.bio-page-shell .bio-stat-item {
+    padding: 16px;
+    border-radius: 20px;
+    border: 1px solid var(--bio-border);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.bio-page-shell .bio-card-item h4,
+.bio-page-shell .bio-post-item h4,
+.bio-page-shell .bio-faq-question,
+.bio-page-shell .bio-info-item strong,
+.bio-page-shell .bio-stat-value {
+    font-size: 0.96rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.bio-page-shell .bio-card-item p,
+.bio-page-shell .bio-post-item p,
+.bio-page-shell .bio-faq-answer,
+.bio-page-shell .bio-info-item span,
+.bio-page-shell .bio-stat-label {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: color-mix(in srgb, var(--bio-text) 78%, transparent);
+}
+
+.bio-page-shell .bio-gallery-item img,
+.bio-page-shell .bio-video-frame iframe,
+.bio-page-shell .bio-video-frame video {
+    width: 100%;
+    border: 0;
+    border-radius: 18px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.bio-page-shell .bio-gallery-caption,
+.bio-page-shell .bio-post-meta,
+.bio-page-shell .bio-mini-caption {
+    margin-top: 10px;
+    font-size: 0.78rem;
+    color: color-mix(in srgb, var(--bio-text) 58%, transparent);
+}
+
+.bio-page-shell .bio-embed-note {
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px dashed color-mix(in srgb, var(--bio-primary) 45%, transparent);
+    background: color-mix(in srgb, var(--bio-primary) 12%, transparent);
+    font-size: 0.82rem;
+}
+
+.bio-page-shell .bio-highlight {
+    padding: 22px;
+    border-radius: 26px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--bio-primary) 22%, transparent), rgba(255, 255, 255, 0.04));
+}
+
+.bio-page-shell .bio-highlight .bio-badge {
+    margin-bottom: 14px;
+}
+
+.bio-page-shell .bio-contact-row,
+.bio-page-shell .bio-info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.bio-page-shell .bio-contact-row i,
+.bio-page-shell .bio-info-row i {
+    width: 16px;
+    margin-top: 4px;
+    color: var(--bio-primary);
+}
+
+.bio-page-shell .bio-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    opacity: 0.72;
+    font-size: 0.78rem;
+}
+
+.bio-page-shell .bio-footer a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.bio-page-shell.is-desktop {
+    max-width: var(--bio-shell-max);
+    margin: 0 auto;
+}
+
+.bio-page-shell.is-public {
+    min-height: 100vh;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.bio-page-shell .bio-block--form .bio-public-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 8px;
+    text-align: left;
+}
+
+.bio-page-shell .bio-form-intro {
+    margin-bottom: 6px;
+}
+
+.bio-page-shell .bio-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bio-page-shell .bio-form-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: color-mix(in srgb, var(--bio-text) 92%, transparent);
+}
+
+.bio-page-shell .bio-form-req {
+    color: #f87171;
+}
+
+.bio-page-shell .bio-form-hint {
+    font-size: 0.74rem;
+    color: color-mix(in srgb, var(--bio-text) 62%, transparent);
+    line-height: 1.4;
+}
+
+.bio-page-shell .bio-form-control {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid var(--bio-border);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--bio-text);
+    padding: 12px 14px;
+    font: inherit;
+    outline: none;
+}
+
+.bio-page-shell .bio-form-control:focus {
+    border-color: color-mix(in srgb, var(--bio-primary) 55%, var(--bio-border));
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--bio-primary) 22%, transparent);
+}
+
+.bio-page-shell .bio-form-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.86rem;
+    margin-bottom: 6px;
+}
+
+.bio-page-shell .bio-form-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bio-page-shell .bio-form-honeypot {
+    position: absolute;
+    left: -9999px;
+    height: 0;
+    overflow: hidden;
+}
+
+.bio-page-shell .bio-form-status {
+    font-size: 0.86rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.bio-page-shell .bio-form-status--ok {
+    color: #4ade80;
+}
+
+.bio-page-shell .bio-form-status--error {
+    color: #f87171;
+}
+
+.bio-page-shell textarea.bio-form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+@media (max-width: 760px) {
+    .bio-page-shell {
+        padding: 22px 16px max(32px, calc(env(safe-area-inset-bottom, 0px) + 20px));
+    }
+
+    .bio-page-shell .bio-content,
+    .bio-page-shell .links-wrapper {
+        color: var(--bio-text);
+    }
+
+    .bio-page-shell .preview-name,
+    .bio-page-shell .bio-title {
+        color: var(--bio-text);
+    }
+
+    .bio-page-shell .preview-bio,
+    .bio-page-shell .bio-subtitle,
+    .bio-page-shell .bio-copy {
+        color: color-mix(in srgb, var(--bio-text) 84%, transparent);
+    }
+
+    .bio-page-shell .bio-footer {
+        color: color-mix(in srgb, var(--bio-text) 72%, transparent);
+    }
+
+    .bio-page-shell .bio-footer a {
+        color: color-mix(in srgb, var(--bio-primary) 78%, var(--bio-text) 22%);
+    }
+
+    .bio-page-shell .bio-action-grid.grid,
+    .bio-page-shell .bio-social-grid.grid,
+    .bio-page-shell .bio-card-grid,
+    .bio-page-shell .bio-gallery-grid,
+    .bio-page-shell .bio-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

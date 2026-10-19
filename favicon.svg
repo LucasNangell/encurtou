@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Encurtou icon">
+  <title>Encurtou icon</title>
+  <line x1="96" y1="416" x2="416" y2="196" stroke="#0f172a" stroke-width="58" stroke-linecap="round"/>
+  <line x1="56" y1="294" x2="224" y2="178" stroke="#0f172a" stroke-width="58" stroke-linecap="round"/>
+  <circle cx="224" cy="76" r="52" fill="#0f172a"/>
+</svg>

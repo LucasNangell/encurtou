@@ -1,0 +1,79 @@
+Política de Privacidade – encurtou.pro
+1. Introdução
+
+A encurtou.pro valoriza a privacidade de seus usuários e dos visitantes dos links encurtados. Esta Política explica como coletamos, utilizamos, armazenamos e compartilhamos dados pessoais, bem como os direitos dos titulares de acordo com a Lei Geral de Proteção de Dados Pessoais (LGPD). A LGPD estabelece direitos para os titulares e obrigações para os controladores e operadores de dados; os dados pessoais abrangem qualquer informação que identifique ou torne identificável uma pessoa natural. Esta política integra os Termos de Uso e deve ser lida em conjunto.
+
+2. Definições
+Dados pessoais: informações relacionadas a pessoa natural identificada ou identificável, como nome, endereço, CPF, e‑mail, IP ou identificadores eletrônicos.
+Dados sensíveis: dados que revelam origem racial ou étnica, convicção religiosa, opinião política, saúde ou vida sexual, dados genéticos ou biométricos. A encurtou.pro não solicita dados sensíveis para cadastro.
+Controlador: a encurtou.pro, que determina as finalidades e meios de tratamento.
+Operador: terceiros que realizam o tratamento de dados em nome da encurtou.pro (ex.: prestadores de pagamento, provedores de hospedagem).
+Encarregado de dados (DPO): pessoa indicada pela encurtou.pro para atuar como canal de comunicação entre a empresa, os titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD).
+3. Dados coletados e como são coletados
+3.1. Dados fornecidos pelo usuário
+Dados de cadastro: nome, e‑mail, telefone, senha de acesso e dados de faturamento (CPF ou CNPJ, endereço) para criação da conta e emissão de notas fiscais.
+Dados de perfil e personalização: informações inseridas pelo usuário ao criar páginas “bio”, como foto, descrição e links externos. O usuário deve assegurar que possui direitos sobre quaisquer imagens ou conteúdos que enviar.
+3.2. Dados coletados automaticamente
+Dados de navegação na plataforma: cookies e identificadores eletrônicos para autenticação, manutenção de sessão e aprimoramento da experiência.
+Rastreamento de cliques: quando um visitante acessa um link encurtado, coletamos de forma automatizada: endereço IP (apenas para geolocalização aproximada e em formato anonimizado quando possível), tipo de dispositivo e navegador, página de referência (referrer) e data/hora de acesso. Tais dados são usados para fornecer estatísticas agregadas ao usuário.
+3.3. Dados de terceiros
+Informações de pagamento são tratadas diretamente pelos parceiros de processamento (ex.: Asaas). A encurtou.pro apenas recebe status da transação e dados necessários para liberação de serviços. Poderemos receber informações de autenticação de terceiros (Single Sign-On) se o usuário optar por login social.
+4. Finalidades e bases legais
+
+A encurtou.pro trata dados pessoais em conformidade com as bases legais previstas na LGPD. As principais finalidades incluem:
+
+Execução de contrato: prestação dos serviços de encurtamento, geração de QR codes, páginas “bio” e disponibilização de relatórios analíticos; cobrança de planos pagos; suporte técnico.
+Cumprimento de obrigações legais: emissão de notas fiscais e cumprimento de exigências fiscais e regulatórias.
+Legítimo interesse: melhoria contínua da plataforma, prevenção de fraudes, realização de análises estatísticas, marketing interno (ofertas de upgrade). Nesses casos, adotamos medidas para equilibrar nossos interesses com os direitos do titular, garantindo transparência e possibilidade de oposição.
+Consentimento: envio de newsletters ou comunicações promocionais, quando aplicável. O usuário pode revogar o consentimento a qualquer momento.
+5. Compartilhamento de dados
+
+A encurtou.pro não vende dados pessoais a terceiros. Os dados podem ser compartilhados:
+
+Prestadores de serviço: empresas de processamento de pagamento (Asaas), provedores de hospedagem, empresas de marketing e analytics. Tais terceiros agem como operadores e estão contratualmente obrigados a manter confidencialidade e segurança.
+Autoridades: quando exigido por lei ou determinação judicial.
+Transferência internacional: os servidores podem estar localizados fora do Brasil. Nesses casos, asseguramos que o país destinatário fornece grau de proteção adequado ou utilizamos cláusulas contratuais específicas, conforme previsto na LGPD.
+6. Retenção e segurança
+
+A encurtou.pro implementa medidas técnicas e administrativas para proteger os dados pessoais, incluindo criptografia TLS/SSL, controles de acesso e boas práticas recomendadas. Em caso de incidente de segurança que possa acarretar risco ou dano relevante, notificaremos os titulares e a ANPD em tempo razoável.
+
+Os dados são armazenados enquanto houver necessidade para cumprir as finalidades informadas ou obrigações legais. Após o encerramento da conta, manteremos dados pelo prazo necessário para defesa judicial ou cumprimento de obrigações fiscais e legais. Os dados de analytics podem ser anonimizados para fins estatísticos.
+
+7. Direitos dos titulares
+
+Nos termos da LGPD, os titulares possuem direitos como:
+
+Confirmação e acesso: obter informações sobre a existência de tratamento e acesso aos dados pessoais coletados.
+Correção: solicitar atualização ou correção de dados incompletos ou desatualizados.
+Anonimização, bloqueio ou eliminação: requerer a eliminação de dados desnecessários ou excessivos.
+Portabilidade: receber os dados pessoais em formato estruturado e de uso comum, observadas as normas da ANPD.
+Revogação do consentimento: quando o tratamento se basear em consentimento, o titular poderá revogá‑lo a qualquer momento.
+Oposição: opor‑se ao tratamento realizado com base no legítimo interesse.
+
+Os pedidos podem ser feitos através do canal de suporte. Para proteger a privacidade, poderemos solicitar informações adicionais que comprovem a identidade do solicitante antes de atender às requisições. Caso o pedido seja inviável ou impacte direitos de terceiros, explicaremos os motivos.
+
+8. Cookies e tecnologias de rastreamento
+
+Utilizamos cookies e tecnologias semelhantes para:
+
+Manter sessões autenticadas e prevenir fraudes;
+Registrar preferências de navegação;
+Realizar análises agregadas de uso e desempenho.
+
+O usuário pode configurar seu navegador para recusar cookies, mas algumas funcionalidades podem ser afetadas. Cookies de terceiros, como ferramentas de analytics, seguem as políticas dessas empresas.
+
+9. Links externos
+
+Links encurtados podem direcionar para sites de terceiros que possuem políticas próprias. A encurtou.pro não se responsabiliza por práticas de privacidade desses sites. Recomendamos que o usuário leia os termos e políticas dos destinos acessados.
+
+10. Alterações desta política
+
+Esta Política de Privacidade poderá ser atualizada para refletir mudanças legislativas ou alterações nos serviços. Em caso de mudanças substanciais, informaremos os usuários por meio do site ou por e‑mail. A continuação do uso após a divulgação das alterações implicará aceitação.
+
+11. Contato
+
+Em caso de dúvidas sobre esta Política ou para exercer direitos previstos na LGPD, o titular poderá entrar em contato com o encarregado de dados por meio do e‑mail informado no site. A encurtou.pro compromete‑se a responder solicitações de forma transparente.
+
+12. Foro aplicável
+
+Esta Política é regida pelas leis brasileiras, especialmente a LGPD, que estabelece direitos para os titulares de dados e obrigações aos controladores. Fica eleito o foro da Comarca de Brasília/DF, com renúncia a qualquer outro, por mais privilegiado que seja, para dirimir eventuais disputas relacionadas a esta Política.

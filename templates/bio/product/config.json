@@ -1,0 +1,10 @@
+{
+    "id": 13,
+    "name": "Product Focus",
+    "slug": "product",
+    "description": "Template orientado à conversão para campanhas, ofertas e lançamentos digitais.",
+    "category": "Produto",
+    "ideal_for": "Lançamentos, infoprodutos e páginas de venda",
+    "page_types": ["landing", "campaign"],
+    "premium": true
+}

@@ -1,0 +1,10 @@
+{
+    "id": 11,
+    "name": "Executive Pro",
+    "slug": "executive",
+    "description": "Template profissional para presença institucional, serviços e conversão consultiva.",
+    "category": "Executivo",
+    "ideal_for": "Consultorias, escritórios e empresas B2B",
+    "page_types": ["bio", "landing", "campaign"],
+    "premium": true
+}

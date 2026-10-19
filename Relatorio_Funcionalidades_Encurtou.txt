@@ -1,0 +1,37 @@
+RELATÓRIO DEFINITIVO DE FUNCIONALIDADES E CAPACIDADES - ENCURTOU.PRO
+
+1. RESUMO EXECUTIVO DO PRODUTO
+O Encurtou.pro é uma plataforma SaaS (Software as a Service) de alto desempenho focada em Link Management, QR Intelligence e Digital Identity. Projetada para atender desde usuários individuais até grandes equipes de marketing, a plataforma transforma links genéricos em ativos de marca monitoráveis, oferecendo uma infraestrutura robusta para microsites (Bio Pages) e rastreamento avançado de conversões.
+
+2. GESTÃO DE LINKS (O CORE)
+O motor de redirecionamento do Encurtou.pro não apenas encurta URLs, mas oferece controle total sobre a jornada do usuário.
+- Criação Personalizada: Slugs únicos (ex: encurtou.pro/promocao-natal) e suporte a subdomínios personalizados.
+- Deep Linking Nativo: Configuração de destinos diferentes baseados no sistema operacional do visitante (iOS, Android e Windows).
+- Controle de Agility: Edição dinâmica de destino em tempo real e gestão de status (Ativo/Pausado).
+
+3. MOTOR DE QR CODES DINÂMICOS
+- Natureza Dinâmica: QR Codes vinculados a links curtos, permitindo alteração do destino sem mudar o código impresso.
+- Customização Estética Premium: Controle de cores, formatos geométricos dos módulos e olhos, e upload de logo central.
+- Exportação Profissional: Disponibilidade em formatos PNG (digital) e SVG (vetorial/impressão).
+
+4. LINK-IN-BIO (BIO PAGES)
+- Construtor visual "No-Code" com Live Preview em tempo real.
+- Blocos e Componentes: Links em lista, botão de WhatsApp Direct e bloco de Chave Pix.
+- Design Customizável: Temas, cores de fundo/botões e diversos estilos (Sólido, Outline, Arredondado ou Pill).
+
+5. GESTÃO DE CAMPANHAS E UTMS
+- Agrupamento Lógico: Organização de links dentro de campanhas para análise consolidada.
+- Injeção Retroativa de UTM: Aplicação de tags UTM (source, medium, campaign, etc.) em links já existentes de forma transparente.
+
+6. ANALYTICS E DATA VISUALIZATION
+- Engajamento Temporal: Gráfico de linha com histórico de cliques.
+- Geolocalização (Drilldown): Análise por País, Estado/Região e Cidade.
+- Dispositivos e SO: Identificação de cliques por sistema operacional (iOS, Android, Windows, etc.).
+- Fontes (Referrers): Rastreamento da origem do tráfego (Instagram, Google, Acesso Direto).
+- Tipo de Tráfego: Diferenciação entre cliques via Link Digital e scans de QR Code Físico.
+- Analytics de Campanha: Dashboard filtrado por campanhas específicas.
+
+7. GESTÃO DE CONTA E SEGURANÇA
+- Autenticação Híbrida: E-mail/Senha e Login nativo via Google Identity Services.
+- Recuperação de Acesso: Fluxo de recuperação de senha via códigos temporários.
+- Segurança: Arquitetura protegida contra injeções SQL e logs detalhados de acesso.

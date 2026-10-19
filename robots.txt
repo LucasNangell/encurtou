@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin_api.php
+Disallow: /analytics.php
+Disallow: /dashboard.php
+Disallow: /auth.php
+Disallow: /manage_links.php
+Disallow: /manage_bio.php
+Disallow: /checkout.php
+
+Sitemap: https://encurtou.pro/sitemap.xml
+

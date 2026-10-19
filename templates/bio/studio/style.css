@@ -1,0 +1,53 @@
+body.tpl-studio,
+#bioPreviewDevice.tpl-studio {
+    --text: #f8fafc !important;
+    --bg: #0f172a !important;
+    --primary: #f472b6 !important;
+}
+
+.tpl-studio.bio-page-shell {
+    background: transparent !important;
+}
+
+body.tpl-studio .bio-public-bg-fixed,
+#bioPreviewDevice.tpl-studio .bio-public-bg-fixed {
+    background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--primary) 24%, transparent), transparent 38%),
+        linear-gradient(180deg, color-mix(in srgb, var(--bg) 90%, #0f172a 10%), var(--bg)) !important;
+}
+
+.tpl-studio .bio-page-shell .bio-header {
+    border-radius: 30px;
+    backdrop-filter: blur(8px);
+}
+
+.tpl-studio .bio-page-shell .bio-avatar {
+    border-radius: 999px;
+    width: 96px;
+    height: 96px;
+}
+
+.tpl-studio .bio-page-shell .bio-card-grid,
+.tpl-studio .bio-page-shell .bio-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 520px) {
+    .tpl-studio .bio-page-shell .bio-card-grid,
+    .tpl-studio .bio-page-shell .bio-gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.tpl-studio .bio-page-shell .bio-gallery-item,
+.tpl-studio .bio-page-shell .bio-card-item,
+.tpl-studio .bio-page-shell .bio-post-item {
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.tpl-studio .bio-page-shell .btn-bio,
+.tpl-studio .bio-page-shell .bio-btn-preview {
+    border-radius: 999px;
+    font-weight: 800;
+}

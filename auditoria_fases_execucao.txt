@@ -1,0 +1,227 @@
+1. Contexto geral do projeto
+- Auditoria tecnica principal ja foi executada anteriormente e resultou em: achados priorizados, plano por fases, backlog e prompts menores iniciais.
+- Escopo ja auditado: seguranca, estabilidade/confiabilidade, LGPD, pagamentos/login/admin, banco MySQL, performance, regras de negocio, acessibilidade, layout/responsividade, SEO tecnico e GEO.
+- Areas criticas identificadas: segredos em codigo, webhook sem validacao robusta (modulo billing), hardening de sessao/CSRF, uploads, consistencia de pagamento, pontos de performance SQL/analytics, lacunas SEO estrutural e acessibilidade.
+- Limitacoes conhecidas: ambiente local nao contem o mesmo volume/distribuicao de dados do ambiente de producao; inferencias baseadas em dados locais podem ser incompletas.
+
+2. Premissas operacionais atualizadas
+- Hospedagem atual: Hostinger (considerar possiveis restricoes de ambiente hospedado/compartilhado).
+- Banco local e de producao: mesma estrutura geral, mas dados locais incompletos em relacao ao servidor.
+- Validacoes dependentes de volume, cardinalidade, distribuicao e dados historicos NAO podem ser concluidas apenas localmente.
+- Nao presumir acesso direto/automatico ao banco de producao.
+- Toda alteracao estrutural de banco deve gerar SQL exato para execucao manual no servidor.
+- SQL deve priorizar seguranca, compatibilidade, baixo risco e evitar comandos destrutivos.
+- Sempre incluir: pre-validacao, impacto esperado, risco e rollback (quando possivel) ou alternativa incremental.
+- Mudancas sensiveis (pagamentos, login, admin, uploads, permissoes, migracoes de banco) exigem checkpoint e aprovacao humana quando risco subir.
+
+3. Fases de execucao
+
+Fase 1 - Correcoes criticas e seguras
+- Objetivo: reduzir riscos imediatos sem refatoracao ampla.
+- Itens contemplados: segredos/configuracoes sensiveis, autenticidade de webhook, exposicoes de debug/erros.
+- Tarefas previstas:
+  1) externalizar segredos para variaveis de ambiente;
+  2) reforcar validacao de webhook;
+  3) restringir saidas de debug e mensagens de erro sensiveis.
+- Dependencias: credenciais novas/rotacionadas, aprovacao para troca de configuracoes em producao.
+- Riscos: quebra de integracoes por segredo ausente; bloqueio de webhook legitimo por configuracao incorreta.
+- Validacao: smoke tests de login, checkout, webhook sandbox/producao controlada, redirect.
+- Exige aprovacao: Sim (rotacao e alteracoes de producao sensivel).
+- Envolve banco: Possivel (ajustes leves em logs/idempotencia).
+- Exige SQL manual: Sim, se houver mudanca de tabela/indice.
+
+Fase 2 - Seguranca, LGPD e confiabilidade
+- Objetivo: endurecer autenticacao/autorizacao e reduzir risco regulatorio.
+- Itens contemplados: sessao/cookies, CSRF, minimizacao/retenção tecnica.
+- Tarefas previstas:
+  1) hardening de sessao;
+  2) token CSRF em rotas criticas;
+  3) plano tecnico de retencao/anonimizacao.
+- Dependencias: alinhamento juridico para LGPD; validacao funcional em fluxos sensiveis.
+- Riscos: impacto em UX de login/sessao; quebra de requests sem token.
+- Validacao: testes antes/depois em login/admin/checkout/gestao.
+- Exige aprovacao: Parcial (LGPD e politicas de retencao).
+- Envolve banco: Sim.
+- Exige SQL manual: Sim.
+
+Fase 3 - Banco, funcoes e performance
+- Objetivo: melhorar consistencia de negocio e desempenho com baixo risco.
+- Itens contemplados: indices, queries analiticas, ajustes de integridade e fluxo de pagamento.
+- Tarefas previstas:
+  1) revisar EXPLAIN e criar indices compostos;
+  2) reduzir consultas custosas;
+  3) fortalecer reconciliacao de pagamentos.
+- Dependencias: amostras reais de carga/consulta em producao (quando possivel), aprovacao em mudanca de billing.
+- Riscos: regressao em relatorios; impacto em fluxo de cobranca.
+- Validacao: benchmark comparativo, testes de consistencia financeira.
+- Exige aprovacao: Sim para billing e mudancas de dados.
+- Envolve banco: Sim.
+- Exige SQL manual: Sim.
+
+Fase 4 - Acessibilidade, layout e responsividade
+- Objetivo: elevar usabilidade sem alterar regra de negocio.
+- Itens contemplados: semantica/formularios/foco/teclado/feedback e ajustes visuais responsivos.
+- Tarefas previstas:
+  1) associacao label-for/id;
+  2) foco visivel consistente;
+  3) mensagens acessiveis;
+  4) validacao em breakpoints.
+- Dependencias: QA visual/funcional.
+- Riscos: regressao visual pontual.
+- Validacao: checklist por fluxo em desktop/tablet/mobile.
+- Exige aprovacao: Nao, salvo alteracao visual ampla.
+- Envolve banco: Nao.
+- Exige SQL manual: Nao.
+
+Fase 5 - SEO tecnico e GEO
+- Objetivo: melhorar rastreabilidade e compreensao por mecanismos de busca/IA.
+- Itens contemplados: robots/sitemap, metas/canonical, dados estruturados, clareza semantica.
+- Tarefas previstas:
+  1) criar/ajustar robots e sitemap;
+  2) complementar metadados e schema;
+  3) reforcar estrutura editorial de conteudo publico.
+- Dependencias: estrategia editorial e validacao de indexacao.
+- Riscos: indexacao indevida se configurado incorretamente.
+- Validacao: Search Console, validadores de schema e rastreio.
+- Exige aprovacao: Parcial (conteudo/estrategia).
+- Envolve banco: Geralmente nao.
+- Exige SQL manual: Somente se houver suporte em BD.
+
+Fase 6 - Melhorias estruturais futuras
+- Objetivo: reduzir acoplamento e risco de manutencao.
+- Itens contemplados: modularizacao incremental de codigo e padronizacao de camadas.
+- Tarefas previstas:
+  1) extracao por modulos sem quebrar contratos;
+  2) padronizacao de tratamento de erro/log.
+- Dependencias: janela de teste regressivo.
+- Riscos: regressao funcional em fluxo legado.
+- Validacao: testes por modulo + smoke end-to-end.
+- Exige aprovacao: Sim.
+- Envolve banco: Eventual.
+- Exige SQL manual: Se houver mudanca de estrutura.
+
+4. Tarefas criticas
+
+Tarefa critica: Externalizacao e rotacao de segredos
+- Area: Seguranca/Operacao
+- Prioridade: Critica
+- Contexto: segredos sensiveis em arquivos de codigo/config.
+- Acao esperada: mover para env, remover segredos do repositorio, planejar rotacao.
+- Arquivos/tabelas afetados: arquivos de configuracao e conexao.
+- Riscos: indisponibilidade por segredo ausente.
+- Testes: conexao DB, login, pagamentos/webhooks.
+- Necessidade de aprovacao: Sim.
+- Necessidade de SQL manual: Nao (a menos que haja ajuste de suporte em BD).
+
+Tarefa critica: Validacao robusta de webhook de pagamento
+- Area: Pagamentos
+- Prioridade: Critica
+- Contexto: webhook deve garantir autenticidade e idempotencia.
+- Acao esperada: validar assinatura e tratar eventos com seguranca.
+- Arquivos/tabelas afetados: endpoint de webhook, tabela de log/idempotencia.
+- Riscos: perder evento legitimo ou aceitar evento forjado.
+- Testes: evento valido/invalido/replay.
+- Necessidade de aprovacao: Sim.
+- Necessidade de SQL manual: Sim se ajuste de tabela.
+
+Tarefa critica: Hardening de sessao e CSRF
+- Area: Seguranca/Auth/Admin
+- Prioridade: Alta
+- Contexto: rotas sensiveis com sessao/cookies exigem protecoes adicionais.
+- Acao esperada: regeneracao de sessao, flags de cookie, token CSRF.
+- Arquivos/tabelas afetados: auth/session e endpoints de escrita.
+- Riscos: quebra de requests existentes e UX de login.
+- Testes: login/logout/admin/checkout/gestao.
+- Necessidade de aprovacao: Nao (exceto impacto alto).
+- Necessidade de SQL manual: Nao.
+
+Tarefa critica: Endurecimento de uploads
+- Area: Seguranca/Uploads
+- Prioridade: Alta
+- Contexto: validacao por MIME declarado e extensao e insuficiente.
+- Acao esperada: validar conteudo real, restringir tipos, nome seguro.
+- Arquivos/tabelas afetados: endpoints de upload e paths de armazenamento.
+- Riscos: bloqueio de uploads antes aceitos.
+- Testes: uploads legitimos e invalidos.
+- Necessidade de aprovacao: Nao.
+- Necessidade de SQL manual: Nao.
+
+Tarefa critica: Indices e tuning de analytics
+- Area: Banco/Performance
+- Prioridade: Alta
+- Contexto: consultas de analytics podem degradar com volume real.
+- Acao esperada: definir indices por padrao de consulta.
+- Arquivos/tabelas afetados: scripts SQL e tabelas de log/links/conversoes.
+- Riscos: lock/tempo de aplicacao em producao.
+- Testes: EXPLAIN e tempo de resposta antes/depois.
+- Necessidade de aprovacao: Sim em janela de producao.
+- Necessidade de SQL manual: Sim.
+
+5. Regras para banco de dados
+- Analise local: usar estrutura local para validar schema, relacoes e viabilidade de SQL.
+- Nao assumir: plano de execucao final, cardinalidade, seletividade e distribuicao reais sem producao.
+- Preparar SQL para producao:
+  1) SQL de pre-validacao (existencia de tabela/coluna/indice, volume aproximado);
+  2) SQL principal (idempotente quando possivel);
+  3) SQL de validacao posterior;
+  4) SQL de rollback/alternativa segura.
+- Validacao antes:
+  - confirmar estrutura existente;
+  - estimar impacto (linhas/indice/lock);
+  - confirmar compatibilidade de versao MySQL da Hostinger.
+- Validacao depois:
+  - integridade dos dados;
+  - desempenho da query alvo;
+  - ausencia de regressao funcional.
+- Rollback:
+  - priorizar comandos reversiveis;
+  - se nao houver rollback seguro imediato, usar alternativa incremental e flag de controle.
+
+6. Regras para ambiente Hostinger
+- Limitacoes possiveis:
+  - acesso shell/root restrito;
+  - janelas de manutencao limitadas;
+  - limites de recursos em hospedagem compartilhada.
+- Cuidados com deploy:
+  - aplicar por etapas pequenas;
+  - confirmar variaveis de ambiente e permissao de arquivos;
+  - evitar mudancas simultaneas grandes em codigo + banco.
+- Cuidados com configuracao:
+  - separar o que e alteravel por codigo e o que depende de painel Hostinger.
+- O que depende de codigo:
+  - validacoes backend, tratamento de erro, fluxo de sessao/CSRF, frontend, SEO tecnico.
+- O que depende de hospedagem:
+  - SSL/certificados, politicas de servidor, cron, limites de processo, configuracao de PHP/MySQL.
+- O que validar manualmente:
+  - variaveis de ambiente, webhook endpoint publico, permissao de upload, latencia real e logs.
+
+7. Ordem recomendada de execucao
+- Sequencia ideal:
+  1) Fase 1
+  2) Fase 2
+  3) Fase 3
+  4) Fase 4
+  5) Fase 5
+  6) Fase 6
+- Checkpoints:
+  - checkpoint antes de cada tarefa sensivel;
+  - checkpoint adicional antes de qualquer SQL de producao.
+- Backups logicos:
+  - export logico das tabelas impactadas antes de SQL.
+- Branches:
+  - 1 branch por fase + commits pequenos por tarefa.
+- Pontos de parada para aprovacao:
+  - qualquer risco acima do previsto;
+  - mudancas em pagamento/login/admin/uploads;
+  - toda mudanca de banco para producao.
+
+8. Resumo operacional para uso em prompts menores
+- A auditoria ja foi feita: nao repetir diagnostico completo.
+- Usar este TXT como fonte de continuidade entre fases.
+- Sempre considerar: Hostinger + diferenca entre dados locais e producao.
+- Nunca aplicar SQL automaticamente em producao.
+- Toda tarefa de banco deve entregar SQL exato para execucao manual.
+- Sempre incluir: pre-validacao, impacto esperado, risco, validacao posterior e rollback (quando possivel).
+- Exigir testes antes/depois e relatorio do que foi alterado.
+- Em risco maior que previsto: parar e pedir aprovacao humana.
+- Priorizar seguranca, estabilidade, compatibilidade e baixo risco incremental.

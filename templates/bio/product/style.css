@@ -1,0 +1,35 @@
+body.tpl-product,
+#bioPreviewDevice.tpl-product,
+.tpl-product.bio-page-shell {
+    --text: #fef3c7 !important;
+    --bg: #1c1917 !important;
+    --primary: #fb923c !important;
+    --bio-card: color-mix(in srgb, var(--bio-bg) 72%, #f97316 28%);
+}
+
+.tpl-product .bio-page-shell .bio-header {
+    border-radius: 22px;
+    border-color: color-mix(in srgb, #f97316 45%, transparent);
+}
+
+.tpl-product .bio-page-shell .bio-kicker {
+    color: #fdba74 !important;
+}
+
+.tpl-product .bio-page-shell .bio-highlight,
+.tpl-product .bio-page-shell .bio-block--cta {
+    border-color: color-mix(in srgb, #f97316 42%, transparent);
+    box-shadow: 0 12px 32px rgba(249, 115, 22, 0.22);
+}
+
+.tpl-product .bio-page-shell .bio-action-grid {
+    gap: 14px;
+}
+
+.tpl-product .bio-page-shell .btn-bio,
+.tpl-product .bio-page-shell .bio-btn-preview {
+    min-height: 60px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+}

@@ -1,0 +1,10 @@
+{
+    "id": 12,
+    "name": "Studio Portfolio",
+    "slug": "studio",
+    "description": "Template profissional para portfólio com foco em projetos, mídia e autoridade criativa.",
+    "category": "Portfólio",
+    "ideal_for": "Designers, criadores e estúdios",
+    "page_types": ["bio", "landing", "blog"],
+    "premium": false
+}
